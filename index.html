@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>牛市生存手册 · 初学者培训书</title>
+<style>
+:root{
+  --bg:#FDF8F1;
+  --card:#FFFFFF;
+  --ink:#332E28;
+  --ink-soft:#6B6257;
+  --orange:#F2764E;
+  --orange-deep:#D95B33;
+  --gold:#E9B44C;
+  --gold-soft:#FBEED5;
+  --green:#7FA96B;
+  --green-soft:#EAF3E4;
+  --blue:#5E9FC4;
+  --blue-soft:#E6F1F7;
+  --red:#D9534F;
+  --line:#EFE6D8;
+  --radius:18px;
+  --shadow:0 6px 24px rgba(180,140,80,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:84px;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.85;font-size:16.5px;
+  background-image:radial-gradient(circle at 15% 8%, rgba(233,180,76,.10) 0%, transparent 32%),radial-gradient(circle at 85% 20%, rgba(242,118,78,.08) 0%, transparent 30%);
+}
+/* ---------- 顶部阅读进度条 ---------- */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--orange),var(--gold));z-index:1000;border-radius:0 3px 3px 0;}
+/* ---------- 顶部导航 ---------- */
+nav{
+  position:sticky;top:0;z-index:999;background:rgba(253,248,241,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 20px;}
+.nav-logo{font-weight:800;font-size:17px;color:var(--orange-deep);white-space:nowrap;}
+.nav-logo span{color:var(--gold);}
+.nav-toc{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1;padding:2px 0;}
+.nav-toc::-webkit-scrollbar{display:none;}
+.nav-toc a{flex:0 0 auto;font-size:13px;color:var(--ink-soft);text-decoration:none;padding:5px 11px;border-radius:99px;border:1px solid var(--line);background:var(--card);transition:.2s;}
+.nav-toc a:hover,.nav-toc a.active{background:var(--orange);color:#fff;border-color:var(--orange);}
+/* ---------- 版式 ---------- */
+main{max-width:880px;margin:0 auto;padding:0 22px 90px;}
+section{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:38px 42px;margin:34px 0;border:1px solid var(--line);}
+@media(max-width:640px){section{padding:26px 20px;} body{font-size:16px;}}
+h2.sec-title{
+  font-size:26px;font-weight:800;letter-spacing:.5px;margin-bottom:6px;color:var(--ink);
+  display:flex;align-items:center;gap:12px;
+}
+h2.sec-title .num{
+  flex:0 0 auto;width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--orange),var(--gold));color:#fff;font-size:17px;font-weight:800;
+  box-shadow:0 4px 12px rgba(242,118,78,.35);
+}
+.sec-sub{color:var(--ink-soft);font-size:14.5px;margin-bottom:22px;padding-left:2px;}
+h3{font-size:20px;font-weight:800;margin:30px 0 12px;color:var(--orange-deep);position:relative;padding-left:14px;}
+h3::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:5px;border-radius:3px;background:linear-gradient(var(--orange),var(--gold));}
+h4{font-size:17px;font-weight:700;margin:20px 0 8px;color:var(--ink);}
+p{margin:10px 0;}
+strong{color:var(--orange-deep);}
+ul,ol{margin:10px 0 10px 24px;}
+li{margin:6px 0;}
+a{color:var(--blue);}
+/* ---------- 封面 ---------- */
+.cover{
+  background:linear-gradient(160deg,#FDF4E3 0%,#FBE9D8 45%,#FBDCCB 100%);
+  border-radius:26px;padding:64px 48px 56px;text-align:center;position:relative;overflow:hidden;
+  border:1px solid #F3DCC0;margin-top:34px;box-shadow:0 10px 40px rgba(217,91,51,.12);
+}
+.cover::before,.cover::after{content:"";position:absolute;border-radius:50%;opacity:.5;}
+.cover::before{width:340px;height:340px;background:radial-gradient(circle,rgba(233,180,76,.25),transparent 70%);top:-140px;right:-80px;}
+.cover::after{width:260px;height:260px;background:radial-gradient(circle,rgba(242,118,78,.18),transparent 70%);bottom:-110px;left:-60px;}
+.cover-badge{display:inline-block;background:var(--orange);color:#fff;font-size:13px;font-weight:700;letter-spacing:2px;padding:6px 18px;border-radius:99px;margin-bottom:22px;position:relative;z-index:1;}
+.cover h1{font-size:44px;font-weight:900;letter-spacing:3px;color:var(--orange-deep);position:relative;z-index:1;line-height:1.3;}
+.cover h1 .gold{color:var(--gold);}
+.cover .tagline{font-size:19px;color:#8A5A3B;margin-top:14px;position:relative;z-index:1;font-weight:600;}
+.cover .meta{font-size:13.5px;color:#A0714F;margin-top:22px;position:relative;z-index:1;letter-spacing:1px;}
+.cover-svg{max-width:560px;margin:26px auto 0;position:relative;z-index:1;}
+/* ---------- 表格 ---------- */
+table{width:100%;border-collapse:separate;border-spacing:0;margin:16px 0;font-size:14.5px;border-radius:12px;overflow:hidden;border:1px solid var(--line);}
+th{background:linear-gradient(135deg,var(--orange),var(--gold));color:#fff;padding:11px 12px;font-weight:700;text-align:left;letter-spacing:.5px;}
+td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top;}
+tbody tr:nth-child(even){background:#FBF6EC;}
+tbody tr:hover{background:var(--gold-soft);}
+/* ---------- 提示框 ---------- */
+.tip,.warn,.story,.key{
+  border-radius:14px;padding:16px 20px 16px 56px;margin:16px 0;position:relative;font-size:15px;
+}
+.tip{background:var(--blue-soft);border:1px solid #CDE3EF;}
+.tip::before{content:"💡";position:absolute;left:18px;top:14px;font-size:20px;}
+.warn{background:#FDF0EA;border:1px solid #F6D5C6;}
+.warn::before{content:"⚠️";position:absolute;left:18px;top:14px;font-size:20px;}
+.story{background:var(--green-soft);border:1px solid #D7E8CC;}
+.story::before{content:"📖";position:absolute;left:18px;top:14px;font-size:20px;}
+.key{background:var(--gold-soft);border:1px solid #F0DCB2;}
+.key::before{content:"⭐";position:absolute;left:18px;top:14px;font-size:20px;}
+/* ---------- 卡片网格 ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:18px 0;}
+.gcard{background:#FFFDF8;border:1px solid var(--line);border-radius:14px;padding:18px;transition:.25s;}
+.gcard:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(180,140,80,.14);}
+.gcard .ico{font-size:28px;}
+.gcard h5{font-size:15.5px;font-weight:800;margin:8px 0 6px;color:var(--orange-deep);}
+.gcard p{font-size:13.8px;color:var(--ink-soft);margin:0;line-height:1.7;}
+/* ---------- 配图容器 ---------- */
+.fig{background:linear-gradient(180deg,#FFFDF8,#FBF4E8);border:1px dashed #E8D9C0;border-radius:16px;padding:18px;margin:20px 0;text-align:center;}
+.fig svg{max-width:100%;height:auto;}
+.fig-caption{font-size:13px;color:var(--ink-soft);margin-top:10px;}
+.fig-caption b{color:var(--orange-deep);}
+/* ---------- 口诀 ---------- */
+.koujue{
+  background:linear-gradient(135deg,#FFF4E0,#FFE9D6);border:1px solid #F2D9AE;border-radius:16px;
+  padding:20px 26px;margin:18px 0;font-size:16.5px;font-weight:700;text-align:center;color:#8A4B23;letter-spacing:1px;line-height:2;
+}
+/* ---------- 步骤条 ---------- */
+.steps{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;counter-reset:st;}
+.step{flex:1 1 170px;background:#FFFDF8;border:1px solid var(--line);border-radius:14px;padding:16px;position:relative;counter-increment:st;}
+.step::before{content:counter(st);position:absolute;top:-12px;left:14px;width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step b{display:block;margin-bottom:4px;color:var(--ink);font-size:15px;}
+.step span{font-size:13.5px;color:var(--ink-soft);line-height:1.7;display:block;}
+/* ---------- 决策流 ---------- */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:16px 0;}
+.flow-node{background:#FFFDF8;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font-size:13.8px;flex:1 1 150px;min-width:150px;}
+.flow-node.cond{border-color:#F2C14E;background:var(--gold-soft);font-weight:700;}
+.flow-node.act{border-color:var(--green);background:var(--green-soft);font-weight:700;}
+.flow-node.alert{border-color:var(--red);background:#FBEAE8;font-weight:700;}
+.flow-arrow{align-self:center;color:var(--orange);font-weight:900;font-size:18px;}
+/* ---------- 自测题 ---------- */
+.quiz{background:#FFFDF8;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:14px 0;}
+.quiz .q{font-weight:700;margin-bottom:8px;}
+.quiz .opt{display:block;padding:8px 14px;border:1px solid var(--line);border-radius:10px;margin:6px 0;font-size:14.5px;cursor:pointer;transition:.2s;background:#fff;}
+.quiz .opt:hover{border-color:var(--gold);background:var(--gold-soft);}
+details.answer{margin-top:10px;}
+details.answer summary{cursor:pointer;color:var(--blue);font-size:14px;font-weight:700;}
+details.answer .ans-body{margin-top:8px;background:var(--green-soft);border-radius:10px;padding:12px 16px;font-size:14.5px;border:1px solid #D7E8CC;}
+/* ---------- 学习路径 ---------- */
+.path{display:flex;flex-direction:column;gap:0;margin:20px 0;}
+.path-item{display:flex;gap:16px;position:relative;padding-bottom:26px;}
+.path-item::before{content:"";position:absolute;left:21px;top:46px;bottom:0;width:3px;background:linear-gradient(var(--gold),var(--orange));border-radius:2px;}
+.path-item:last-child::before{display:none;}
+.path-dot{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--gold));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;box-shadow:0 4px 12px rgba(242,118,78,.3);}
+.path-body{background:#FFFDF8;border:1px solid var(--line);border-radius:14px;padding:14px 18px;flex:1;}
+.path-body b{color:var(--orange-deep);}
+.path-body p{font-size:13.8px;color:var(--ink-soft);margin:4px 0 0;}
+/* ---------- 其他 ---------- */
+.chip{display:inline-block;background:var(--green-soft);color:#4E7A3C;border:1px solid #D7E8CC;font-size:12.5px;font-weight:700;border-radius:99px;padding:3px 12px;margin:2px 4px 2px 0;}
+.chip.orange{background:var(--gold-soft);color:#A06B1C;border-color:#F0DCB2;}
+.divider{height:1px;background:var(--line);margin:26px 0;}
+#backTop{position:fixed;right:22px;bottom:24px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--gold));color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:0 6px 18px rgba(242,118,78,.4);opacity:0;pointer-events:none;transition:.3s;z-index:900;}
+#backTop.show{opacity:1;pointer-events:auto;}
+footer{text-align:center;color:#A99E8E;font-size:13px;padding:30px 20px 50px;line-height:2;}
+.foot-note{max-width:880px;margin:0 auto;background:#FFF6E8;border:1px solid #F0DCB2;border-radius:14px;padding:18px 24px;font-size:13.5px;color:#8A6A4A;}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">🐂 牛市生存手册 <span>· 培训书</span></div>
+    <div class="nav-toc">
+      <a href="#guide">使用指南</a>
+      <a href="#ch1">①理念</a>
+      <a href="#ch5">②技术</a>
+      <a href="#ch12">③基本面</a>
+      <a href="#ch15">④操作系统</a>
+      <a href="#ch18">⑤风控</a>
+      <a href="#ch20">⑥实战</a>
+      <a href="#path">学习路径</a>
+      <a href="#quiz">自测题</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- ================= 封面 ================= -->
+<div class="cover">
+  <div class="cover-badge">投资初学者 · 入门培训书</div>
+  <h1>牛市生存手册<br><span class="gold">从零读懂一套投资体系</span></h1>
+  <p class="tagline">顺国家意志而为 · 逆散户人性而行</p>
+  <div class="cover-svg">
+    <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gUp" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#F2764E"/><stop offset="1" stop-color="#E9B44C"/>
+        </linearGradient>
+        <linearGradient id="gArea" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#F2764E" stop-opacity=".25"/><stop offset="1" stop-color="#E9B44C" stop-opacity=".05"/>
+        </linearGradient>
+      </defs>
+      <circle cx="96" cy="150" r="52" fill="#FFF6E8" stroke="#F0DCB2" stroke-width="2"/>
+      <text x="96" y="140" font-size="52" text-anchor="middle">🐂</text>
+      <text x="96" y="176" font-size="13" text-anchor="middle" fill="#A0714F" font-weight="700">牛市</text>
+      <path d="M170 170 L210 150 L250 156 L290 130 L330 138 L370 108 L410 116 L450 78 L490 88" fill="none" stroke="#F2764E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M170 170 L210 150 L250 156 L290 130 L330 138 L370 108 L410 116 L450 78 L490 88 L490 190 L170 190 Z" fill="url(#gArea)"/>
+      <circle cx="210" cy="150" r="5" fill="#E9B44C"/><circle cx="290" cy="130" r="5" fill="#E9B44C"/>
+      <circle cx="370" cy="108" r="5" fill="#E9B44C"/><circle cx="450" cy="78" r="5" fill="#E9B44C"/>
+      <text x="492" y="80" font-size="15" fill="#D95B33" font-weight="800">↑</text>
+      <text x="260" y="30" font-size="14" fill="#A0714F">判断趋势 · 管理仓位 · 管住心态</text>
+      <text x="260" y="52" font-size="12" fill="#C08A5A">52期早课 · 332页 · 六大模块</text>
+    </svg>
+  </div>
+  <p class="meta">基于知识库「张湧小密圈投研资料」· 牛市生存手册SKILL 整理 · 2026</p>
+</div>
+
+<!-- ================= 使用指南 ================= -->
+<section id="guide">
+  <h2 class="sec-title"><span class="num">0</span>使用指南：这本书怎么读？</h2>
+  <p class="sec-sub">先花 3 分钟了解它的来历与用法，再决定从哪里开始</p>
+
+  <h3>📦 它是什么？</h3>
+  <p><strong>《牛市生存手册》</strong>是张湧老师 2024.10–2025.02 期间共 <strong>52 期早课</strong>（合计 332 页）的系统提炼，知识库中将其整理为一个可直接调用的 <strong>SKILL 技能</strong>。它不是"预测明天涨跌"的算命工具，而是一套<strong>帮助你在牛市中活下来、赚到该赚的钱</strong>的完整操作系统：</p>
+
+  <div class="grid">
+    <div class="gcard"><div class="ico">🧭</div><h5>判大势</h5><p>用年份周期、量能、均线判断市场处在什么阶段</p></div>
+    <div class="gcard"><div class="ico">🔬</div><h5>选方向</h5><p>跟随国家意志选板块，用渗透率框架看行业空间</p></div>
+    <div class="gcard"><div class="ico">🎯</div><h5>找买卖点</h5><p>用K线、MACD、KDJ、BOLL 等技术指标确定时机</p></div>
+    <div class="gcard"><div class="ico">🛡️</div><h5>管风险</h5><p>用仓位管理、交易纪律、心态建设保护本金</p></div>
+  </div>
+
+  <h3>🗺️ 六大模块地图</h3>
+  <table>
+    <tr><th style="width:16%">模块</th><th style="width:44%">解决什么问题</th><th>适合的读者</th></tr>
+    <tr><td>① 理论基础</td><td>市场的本质、周期规律、怎么选大方向</td><td>所有人都应该先读</td></tr>
+    <tr><td>② 技术分析</td><td>K线、均线、量价、MACD、KDJ、BOLL 怎么看</td><td>想学买卖点的初学者</td></tr>
+    <tr><td>③ 基本面分析</td><td>价值/成长风格、行业遴选、渗透率估值</td><td>想选行业和公司的投资者</td></tr>
+    <tr><td>④ 操作系统</td><td>怎么搭建"入场—持仓—离场"的规则体系</td><td>已经常操作但总亏钱的人</td></tr>
+    <tr><td>⑤ 风险管理</td><td>仓位怎么配、风险怎么控、心态怎么稳</td><td>在牛市中亏过钱的人</td></tr>
+    <tr><td>⑥ 决策启发式</td><td>把上面所有知识变成 10 条"如果…就…"指令</td><td>想立即上手的人</td></tr>
+  </table>
+
+  <div class="key">⭐ <strong>使用建议</strong>：初学者请按 ①→②→③→④→⑤→⑥ 顺序阅读；已有基础的人可以从 ⑥ 决策规则倒推回看。每章末尾的"📖 早课故事"来自知识库中的真实案例，帮你把抽象概念落到具体行情上。</div>
+
+  <div class="tip">💡 <strong>小知识</strong>：在 ima.copilot 中，这套体系被打包成名为 <code>niushi-shengcun-shouce</code> 的 SKILL。当你向助手提问"帮我用牛市生存手册分析当前行情"，助手就会调用它——它会按模块输出分析结论、仓位建议和风险提示。这本培训书，就是教你<strong>看懂并驾驭</strong>这套技能的"用户手册"。</div>
+</section>
+
+<!-- ================= 第一部分 ================= -->
+<section id="ch1">
+  <h2 class="sec-title"><span class="num">1</span>核心理念：一句话读懂整套体系</h2>
+  <p class="sec-sub">模块一 · 理论基础 | 所有知识的地基</p>
+
+  <div class="koujue">顺国家意志而为 · 逆散户人性而行</div>
+
+  <p>这句话是整套《牛市生存手册》的<strong>灵魂</strong>。理解它，就等于拿到了打开所有模块的钥匙。</p>
+
+  <h3>🔑 "顺国家意志"：跟谁站在一边？</h3>
+  <p>A股市场带有鲜明的政策属性。国家想让你赚钱的方向，往往有持续的增量资金、产业扶持和估值抬升；而国家正在压制的方向（比如疯炒、过热、泡沫），无论散户多狂热，最终都会被"压"下来。手册中的判断：</p>
+  <ul>
+    <li><strong>慢牛才是国家要的</strong>——疯牛涨太快会透支经济转型成果，所以"三步一回头"的慢牛反而是健康的；</li>
+    <li><strong>监管双向管控</strong>——跌多了有人托（国家队托底、政策救市），涨多了有人压（上调保证金、窗口指导"控温"）；</li>
+    <li><strong>方向跟着会议走</strong>——重要会议定方向 → 部门文件抓落实 → 资金流向验证 → 产业链传导。</li>
+  </ul>
+
+  <h3>😈 "逆散户人性"：和谁对着干？</h3>
+  <p>散户的典型行为：<strong>大涨时贪婪追高、大跌时恐惧割肉、套牢后侥幸死扛、亏钱后报复性交易</strong>。手册反复强调"别人贪婪我恐惧，别人恐惧我贪婪"，以及一条最重要的纪律：</p>
+
+  <div class="key">⭐ <strong>卖在上涨时，买在下跌处。</strong>大涨大卖，不追求最高点，只追求相对高位；大跌不恐慌，分批买入优质筹码。</div>
+
+  <div class="story">📖 <strong>早课故事（2024/10/8）</strong>：国庆节后首个交易日，市场情绪极度亢奋，无数人在集合竞价阶段直接挂涨停价"抢筹"，结果当天高开低走，追高者当日浮亏超 10%。这正是"顺散户人性"（追涨）的代价——情绪最热的时候，往往是风险最大的时候。</div>
+
+  <div class="tip">💡 <strong>给初学者的第一个作业</strong>：下次你想"冲进去买"或者"慌着割肉"的时候，先停下来问自己——我现在的决定，是顺着大多数人的情绪，还是逆着它？</div>
+</section>
+
+<section id="ch2">
+  <h2 class="sec-title"><span class="num">2</span>股市二元论：用"两只眼睛"看市场</h2>
+  <p class="sec-sub">模块一 · 理论基础 | 辩证思维入门</p>
+
+  <p>新手看市场只有一种颜色：涨了就是好，跌了就是坏。<strong>二元论</strong>要求你同时看到事物的两面——因为<strong>上涨过程中积累风险，下跌过程中释放机会</strong>。手册给出四组辩证关系：</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="half"><rect x="0" y="0" width="155" height="310"/></clipPath>
+      </defs>
+      <g transform="translate(60,5)">
+        <circle cx="155" cy="155" r="150" fill="#F2764E"/>
+        <circle cx="155" cy="155" r="150" fill="#E9B44C" clip-path="url(#half)"/>
+        <circle cx="155" cy="80" r="26" fill="#E9B44C"/>
+        <circle cx="155" cy="230" r="26" fill="#F2764E"/>
+        <text x="155" y="118" font-size="14" text-anchor="middle" fill="#fff" font-weight="800">涨</text>
+        <text x="155" y="268" font-size="14" text-anchor="middle" fill="#fff" font-weight="800">跌</text>
+        <text x="62" y="155" font-size="11" text-anchor="middle" fill="#FFF3DE">积累风险</text>
+        <text x="248" y="155" font-size="11" text-anchor="middle" fill="#8A5A3B">释放机会</text>
+      </g>
+      <g font-size="14.5">
+        <rect x="320" y="20" width="280" height="60" rx="12" fill="#FFF6E8" stroke="#F0DCB2"/>
+        <text x="336" y="46" fill="#8A4B23" font-weight="800">利好 ↔ 利空</text>
+        <text x="336" y="66" fill="#A0714F" font-size="12.5">现状越糟 → 救市力度可能越大</text>
+        <rect x="320" y="92" width="280" height="60" rx="12" fill="#FFF6E8" stroke="#F0DCB2"/>
+        <text x="336" y="118" fill="#8A4B23" font-weight="800">慢 ↔ 快</text>
+        <text x="336" y="138" fill="#A0714F" font-size="12.5">国家要慢牛，疯牛会被"压"</text>
+        <rect x="320" y="164" width="280" height="60" rx="12" fill="#FFF6E8" stroke="#F0DCB2"/>
+        <text x="336" y="190" fill="#8A4B23" font-weight="800">一致 ↔ 分歧</text>
+        <text x="336" y="210" fill="#A0714F" font-size="12.5">分歧是好事，一致看多反而危险</text>
+        <rect x="320" y="236" width="280" height="60" rx="12" fill="#FFF6E8" stroke="#F0DCB2"/>
+        <text x="336" y="262" fill="#8A4B23" font-weight="800">托底 ↔ 控温</text>
+        <text x="336" y="282" fill="#A0714F" font-size="12.5">跌多了有人托，涨多了有人压</text>
+      </g>
+    </svg>
+    <div class="fig-caption"><b>图 2-1</b> · 股市二元论：市场永远有两面，跌出来的才是机会</div>
+  </div>
+
+  <h3>🧠 四组辩证关系详解</h3>
+  <table>
+    <tr><th style="width:22%">辩证对</th><th>核心认知</th><th style="width:36%">落到操作上</th></tr>
+    <tr><td><strong>利好 / 利空</strong></td><td>政策预期≠市场立刻认可，要等真金白银落地</td><td>利好落地前埋伏，利好兑现后小心"见光死"</td></tr>
+    <tr><td><strong>上涨 / 下跌</strong></td><td>涨中积累风险，跌中释放机会</td><td>大涨之后不贪婪，大跌之后不恐慌</td></tr>
+    <tr><td><strong>快牛 / 慢牛</strong></td><td>国家要慢牛，疯牛必被调控</td><td>三步一回头的行情反而是健康的，拿得住</td></tr>
+    <tr><td><strong>一致 / 分歧</strong></td><td>震荡、轮动是市场在消化分歧，是好事</td><td>一致性看多（如融资余额飙升）要警惕</td></tr>
+  </table>
+
+  <div class="story">📖 <strong>早课故事</strong>：手册用"大善人思维"解释这一课——<strong>牛市疯抢时，乐善好施地把筹码卖给想要的人；巨震恐慌时，勇敢地为国接盘、分忧解愁。</strong>听起来反常识，但这正是"卖在人声鼎沸处、买在无人问津时"的通俗版。</div>
+</section>
+
+<section id="ch3">
+  <h2 class="sec-title"><span class="num">3</span>年份周期与量能：先判断"今年是什么年"</h2>
+  <p class="sec-sub">模块一 · 理论基础（源：第2–3期）| 战略层判断</p>
+
+  <p>手册总结出一个<strong>以年份尾数分类</strong>的市场节奏规律（基于 1988 年以来 A 股历史统计）。注意：这是<strong>概率规律而非铁律</strong>，但它能帮你建立"今年该进攻还是该防守"的框架感。</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="arcG" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#E9B44C"/><stop offset="1" stop-color="#F2764E"/>
+        </linearGradient>
+      </defs>
+      <path d="M60 200 H700" stroke="#EAD9C0" stroke-width="3" stroke-linecap="round"/>
+      <g font-size="12.5" text-anchor="middle">
+        <circle cx="60" cy="200" r="26" fill="#F2764E"/><text x="60" y="205" fill="#fff" font-weight="800">0</text>
+        <text x="60" y="238" fill="#8A4B23">暴涨暴跌</text>
+        <circle cx="160" cy="200" r="26" fill="#B9A48C"/><text x="160" y="205" fill="#fff" font-weight="800">1-3</text>
+        <text x="160" y="238" fill="#8A4B23">震荡/熊</text>
+        <circle cx="260" cy="200" r="26" fill="#7FA96B"/><text x="260" y="205" fill="#fff" font-weight="800">4-5</text>
+        <text x="260" y="238" fill="#4E7A3C">熊转牛</text>
+        <circle cx="360" cy="200" r="26" fill="#F2764E"/><text x="360" y="205" fill="#fff" font-weight="800">6-7</text>
+        <text x="360" y="238" fill="#8A4B23">持续行情</text>
+        <circle cx="460" cy="200" r="26" fill="#8A6A4F"/><text x="460" y="205" fill="#fff" font-weight="800">8</text>
+        <text x="460" y="238" fill="#8A4B23">熊市</text>
+        <circle cx="560" cy="200" r="26" fill="#5E9FC4"/><text x="560" y="205" fill="#fff" font-weight="800">9</text>
+        <text x="560" y="238" fill="#3D7292">修复年</text>
+      </g>
+      <g font-size="12.5">
+        <text x="700" y="60" fill="#D95B33" font-weight="700">📈 波段敢抄底逃顶</text>
+        <text x="700" y="86" fill="#A0714F">🐢 谨慎布局</text>
+        <text x="700" y="112" fill="#4E7A3C" font-weight="700">🔁 转势准备</text>
+        <text x="700" y="138" fill="#D95B33" font-weight="700">🎯 策略核心是找顶</text>
+        <text x="700" y="164" fill="#8A6A4F">🛡️ 防守为主</text>
+        <text x="700" y="190" fill="#3D7292">🔧 政策修复机会</text>
+      </g>
+    </svg>
+    <div class="fig-caption"><b>图 3-1</b> · 年份尾数周期律：先定"攻守基调"，再做具体操作</div>
+  </div>
+
+  <table>
+    <tr><th style="width:14%">尾数</th><th style="width:34%">市场特征</th><th>对应年份</th><th style="width:30%">应对策略</th></tr>
+    <tr><td><strong>0</strong></td><td>暴涨暴跌年</td><td>2000 / 2010 / 2020</td><td>波段交易，敢抄底、肯逃顶</td></tr>
+    <tr><td><strong>1–3</strong></td><td>震荡或熊市</td><td>2001-03 / 2011-13 / 2021-23</td><td>谨慎布局，控制仓位</td></tr>
+    <tr><td><strong>4–5</strong></td><td>周期转换，熊转牛</td><td>2004 / 2014 / 2024</td><td>做好"大跌→大涨→大跌"的转势准备</td></tr>
+    <tr><td><strong>6–7</strong></td><td>持续行情年</td><td>1996-97 / 2006-07 / 2016-17</td><td>策略核心是找顶（持有但会逃）</td></tr>
+    <tr><td><strong>8</strong></td><td>熊市年</td><td>1998 / 2008 / 2018</td><td>防守为主，现金为王</td></tr>
+    <tr><td><strong>9</strong></td><td>修复之年</td><td>1999 / 2009 / 2019</td><td>关注政策修复带来的机会</td></tr>
+  </table>
+
+  <h3>📊 量能辅助判断：地量见地价</h3>
+  <p>除了年份，成交量也能帮助判断大底大顶：</p>
+  <ul>
+    <li><strong>地量缩至前期高点成交量的 1/2</strong> → 多为<strong>反弹</strong>；</li>
+    <li><strong>地量缩至前期高点成交量的 1/3</strong> → 大概率是<strong>反转</strong>。</li>
+  </ul>
+  <div class="story">📖 <strong>早课故事（量能案例）</strong>：2015/9/30 万得全A成交约 3700 亿元，约为前期高点 1.2 万亿的 1/3，随后市场反弹了约 3 个月；2024 年 9 月市场成交萎缩至约 5000 亿（对比峰值 1.2 万亿），同样处于"地量区"，随后迎来政策驱动的大反攻。另外手册还提到干支推背：2026 丙午年"食神生财，股市普涨"，2028 戊申年"七杀偏印，普跌"——作为趣味参考，别当预言用。</div>
+
+  <div class="warn">⚠️ <strong>边界提醒</strong>：年份规律是"统计+玄学"的经验总结，只能定基调，不能定买卖点。真正执行买卖，要看技术信号（第二部分）和操作系统（第四部分）。</div>
+</section>
+
+<section id="ch4">
+  <h2 class="sec-title"><span class="num">4</span>选方向方法论：宏观 → 板块 → 个股</h2>
+  <p class="sec-sub">模块一 · 理论基础 | 解决"买什么"的第一层问题</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="310,40 540,270 80,270" fill="#FBEED5" stroke="#E9B44C" stroke-width="2"/>
+      <polygon points="310,100 470,270 150,270" fill="#FFE4D6" stroke="#F2764E" stroke-width="2"/>
+      <polygon points="310,160 410,270 210,270" fill="#EAF3E4" stroke="#7FA96B" stroke-width="2"/>
+      <text x="310" y="80" font-size="15" text-anchor="middle" fill="#8A4B23" font-weight="800">① 宏观：国家意志 &amp; 政策导向</text>
+      <text x="310" y="150" font-size="13.5" text-anchor="middle" fill="#B24E28" font-weight="700">② 板块：国央企 / 核心科技 / 自主可控</text>
+      <text x="310" y="218" font-size="12.5" text-anchor="middle" fill="#4E7A3C" font-weight="700">③ 个股：大盘看估值，小盘看成长</text>
+      <text x="310" y="252" font-size="12" text-anchor="middle" fill="#7A9A68">AI+ / 首发经济 / 银发经济 / 冰雪经济 / 医药…</text>
+    </svg>
+    <div class="fig-caption"><b>图 4-1</b> · 选方向三层漏斗：从"国家要什么"一路筛到"这只票值不值"</div>
+  </div>
+
+  <h3>🔭 三层选股逻辑</h3>
+  <table>
+    <tr><th style="width:18%">层级</th><th>看什么</th><th style="width:38%">举例</th></tr>
+    <tr><td><strong>宏观方向</strong></td><td>国家意志、政策导向、会议定调</td><td>新质生产力、科技自立自强</td></tr>
+    <tr><td><strong>板块方向</strong></td><td>优先国央企、核心科技、自主可控；关注 AI+、首发/银发/冰雪经济、医药</td><td>信创产业链、半导体、算力</td></tr>
+    <tr><td><strong>个股方向</strong></td><td>大盘股看基本面和估值；中小盘看成长性和赛道前景</td><td>龙头看 PE/PB，成长股看 PEG 与空间</td></tr>
+  </table>
+
+  <h3>🔄 核心逻辑：不离开市场，但做高低切换</h3>
+  <p>手册对"踏空"的观点很鲜明：<strong>踏空不亏钱，被套才亏本金</strong>。所以永远不必满仓追高，而是：</p>
+  <ul>
+    <li><strong>强势不强追</strong>——涨太多的板块等回调再上车；</li>
+    <li><strong>高低切换</strong>——把涨高的换成还在低位的同逻辑品种，保持在场但优化结构。</li>
+  </ul>
+
+  <div class="key">⭐ <strong>顺带一提</strong>：知识库中《买生还是买熟》一课补充了选股的另一种思维——"生资产"（新概念、有想象空间但难理解）与"熟资产"（认知确定性高、长期持有价值）。新手最好<strong>以熟资产打底，再逐步把生资产"研究成熟"</strong>，别在不懂的东西上重仓。</div>
+</section>
+
+<!-- ================= 第二部分 ================= -->
+<section id="ch5">
+  <h2 class="sec-title"><span class="num">5</span>K线入门：读懂多空"拔河比赛"</h2>
+  <p class="sec-sub">模块二 · 技术分析（源：第34–35期）| 技术分析第一步</p>
+
+  <p>K线（蜡烛图）是股票一天走势的可视化：<strong>实体</strong>表示开盘到收盘的多空战果（红色阳线=收盘高于开盘，绿色阴线=收盘低于开盘），<strong>影线</strong>表示盘中冲高或杀跌留下的痕迹。学会看 K 线，就是学会看"多空力量谁占上风"。</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+      <g font-size="12.5" fill="#8A5A3B" text-anchor="middle" font-weight="700">
+        <text x="90" y="26">单根K线</text>
+        <text x="270" y="26">乌云盖顶（见顶）</text>
+        <text x="460" y="26">红三兵（看涨）</text>
+        <text x="630" y="26">上升三部曲（N型）</text>
+      </g>
+      <!-- 单根K线 -->
+      <g>
+        <rect x="52" y="120" width="34" height="70" rx="3" fill="#F2764E"/>
+        <line x1="69" y1="90" x2="69" y2="120" stroke="#F2764E" stroke-width="3"/>
+        <line x1="69" y1="190" x2="69" y2="215" stroke="#F2764E" stroke-width="3"/>
+        <rect x="112" y="140" width="34" height="60" rx="3" fill="#7FA96B"/>
+        <line x1="129" y1="105" x2="129" y2="140" stroke="#7FA96B" stroke-width="3"/>
+        <line x1="129" y1="200" x2="129" y2="225" stroke="#7FA96B" stroke-width="3"/>
+        <rect x="168" y="150" width="34" height="26" rx="3" fill="#C9B79C"/>
+        <line x1="185" y1="120" x2="185" y2="150" stroke="#C9B79C" stroke-width="3"/>
+        <line x1="185" y1="176" x2="185" y2="205" stroke="#C9B79C" stroke-width="3"/>
+        <text x="69" y="245" font-size="11.5" text-anchor="middle" fill="#A0714F">阳线=多方胜</text>
+        <text x="129" y="245" font-size="11.5" text-anchor="middle" fill="#A0714F">阴线=空方胜</text>
+        <text x="185" y="245" font-size="11.5" text-anchor="middle" fill="#A0714F">十字星=平衡</text>
+      </g>
+      <!-- 乌云盖顶 -->
+      <g>
+        <rect x="242" y="110" width="40" height="55" rx="3" fill="#F2764E"/>
+        <line x1="262" y1="85" x2="262" y2="110" stroke="#F2764E" stroke-width="3"/>
+        <line x1="262" y1="165" x2="262" y2="185" stroke="#F2764E" stroke-width="3"/>
+        <rect x="298" y="120" width="40" height="70" rx="3" fill="#7FA96B"/>
+        <line x1="318" y1="95" x2="318" y2="120" stroke="#7FA96B" stroke-width="3"/>
+        <line x1="318" y1="190" x2="318" y2="210" stroke="#7FA96B" stroke-width="3"/>
+        <line x1="240" y1="95" x2="340" y2="95" stroke="#D9534F" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <text x="290" y="245" font-size="11.5" text-anchor="middle" fill="#A0714F">前阳后阴，阴线新高 → 见顶信号</text>
+      </g>
+      <!-- 红三兵 -->
+      <g>
+        <rect x="420" y="160" width="26" height="30" rx="3" fill="#F2764E"/>
+        <line x1="433" y1="140" x2="433" y2="160" stroke="#F2764E" stroke-width="3"/>
+        <rect x="452" y="135" width="26" height="42" rx="3" fill="#F2764E"/>
+        <line x1="465" y1="112" x2="465" y2="135" stroke="#F2764E" stroke-width="3"/>
+        <rect x="484" y="105" width="26" height="55" rx="3" fill="#F2764E"/>
+        <line x1="497" y1="80" x2="497" y2="105" stroke="#F2764E" stroke-width="3"/>
+        <text x="460" y="245" font-size="11.5" text-anchor="middle" fill="#A0714F">三连阳逐级抬升 → 低位出现更可靠</text>
+      </g>
+      <!-- 上升三部曲 -->
+      <g>
+        <rect x="580" y="170" width="28" height="40" rx="3" fill="#F2764E"/>
+        <line x1="594" y1="140" x2="594" y2="170" stroke="#F2764E" stroke-width="3"/>
+        <g fill="#C9B79C">
+          <rect x="614" y="160" width="16" height="22" rx="2"/>
+          <rect x="636" y="168" width="16" height="16" rx="2"/>
+          <rect x="658" y="162" width="16" height="20" rx="2"/>
+        </g>
+        <rect x="680" y="130" width="28" height="50" rx="3" fill="#F2764E"/>
+        <line x1="694" y1="100" x2="694" y2="130" stroke="#F2764E" stroke-width="3"/>
+        <path d="M585 195 C 610 195, 660 190, 690 160" stroke="#D9534F" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+        <text x="660" y="245" font-size="11.5" text-anchor="middle" fill="#A0714F">大阳→缩量小阴→大阳新高（像字母N）</text>
+      </g>
+    </svg>
+    <div class="fig-caption"><b>图 5-1</b> · 常见K线形态速览（示意，非真实行情）</div>
+  </div>
+
+  <h3>🔢 常用形态对照表</h3>
+  <table>
+    <tr><th style="width:20%">类别</th><th style="width:34%">形态</th><th>含义</th></tr>
+    <tr><td rowspan="4"><strong>双K组合</strong></td><td>乌云盖顶</td><td>前阳后阴、阴线最高价更高 → 见顶信号</td></tr>
+    <tr><td>旭日东升</td><td>阴线后阳线收盘高于阴线开盘 → 反弹信号</td></tr>
+    <tr><td>曙光初现</td><td>阳线收复阴线实体一半以下 → 反弹较弱</td></tr>
+    <tr><td>抱线（阳包阴/阴包阳）</td><td>第二根实体完全吞没第一根 → 趋势逆转</td></tr>
+    <tr><td rowspan="5"><strong>多K组合</strong></td><td>红三兵 / 三只乌鸦</td><td>三连阳看涨 / 三连阴看跌（高低位才有指导意义）</td></tr>
+    <tr><td>上升三部曲 / 下降三部曲</td><td>N 型走势：大阳→缩量阴跌→大阳新高</td></tr>
+    <tr><td>锯齿底</td><td>多次回踩同一水平带，磨出锯齿状底部</td></tr>
+    <tr><td>塔形底</td><td>大阴线 → 一串小阴小阳 → 大阳线拉升</td></tr>
+    <tr><td>九阳神功</td><td>连续 9 根小阳线后大胆买入</td></tr>
+  </table>
+
+  <div class="tip">💡 <strong>初学者提示</strong>：K线形态<strong>出现在高位还是低位</strong>，意义完全不同。比如"红三兵"在高位出现可能是最后的诱多，在低位出现才是启动信号。永远结合位置看形态。</div>
+</section>
+
+<section id="ch6">
+  <h2 class="sec-title"><span class="num">6</span>均线系统：市场成本的"温度计"</h2>
+  <p class="sec-sub">模块二 · 技术分析（源：第11、37–38期）| 判断趋势强弱</p>
+
+  <p>均线（MA）就是"N 日收盘价的平均线"，代表这段时间内买入者的平均成本。均线系统在手册中被称为<strong>趋势的骨架</strong>：短均线在上、长均线在下、整齐发散向上，就是最强的"多头排列"。</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+      <g stroke-width="3" fill="none" stroke-linecap="round">
+        <polyline points="40,230 120,215 200,218 280,185 360,175 440,140 520,120 600,85 660,60" stroke="#F2764E"/>
+        <polyline points="40,240 120,232 200,230 280,210 360,200 440,178 520,162 600,140 660,120" stroke="#E9B44C"/>
+        <polyline points="40,250 120,248 200,244 280,232 360,224 440,210 520,198 600,182 660,168" stroke="#5E9FC4"/>
+      </g>
+      <g font-size="12.5" fill="#A0714F">
+        <text x="668" y="60" fill="#D95B33" font-weight="800">5日 攻击线</text>
+        <text x="668" y="122" fill="#A06B1C" font-weight="800">10日 操盘线</text>
+        <text x="668" y="170" fill="#3D7292" font-weight="800">30日 趋势线</text>
+      </g>
+      <text x="350" y="30" font-size="14" text-anchor="middle" fill="#8A4B23" font-weight="700">多头排列：短在上、长在下，扇面向上发散 = 趋势健康</text>
+    </svg>
+    <div class="fig-caption"><b>图 6-1</b> · 均线多头排列示意：股价沿着短均线上行，回踩均线常是买点</div>
+  </div>
+
+  <h3>📏 均线参数速记</h3>
+  <table>
+    <tr><th style="width:26%">均线</th><th style="width:30%">俗称</th><th>作用</th></tr>
+    <tr><td>5日</td><td>攻击线</td><td>短线攻击节奏</td></tr>
+    <tr><td>10日</td><td>操盘线</td><td>短线操作的生命线</td></tr>
+    <tr><td>20日</td><td>生命线 / 强弱分水岭</td><td>站上=强，跌破=弱（手册最常用！）</td></tr>
+    <tr><td>30日</td><td>趋势线</td><td>中线趋势方向</td></tr>
+    <tr><td>60日</td><td>决策线</td><td>中期牛熊参考</td></tr>
+    <tr><td>120/250日</td><td>牛熊线</td><td>长期大趋势</td></tr>
+  </table>
+
+  <h3>🎯 格兰维尔八大买卖法则（核心中的核心）</h3>
+  <p>手册高度推崇这套 1960 年代的均线交易法则——因为它把"什么时候买、什么时候卖"翻译成了<strong>可执行的规则</strong>：</p>
+  <table>
+    <tr><th style="width:14%">类型</th><th style="width:10%">编号</th><th>信号描述</th></tr>
+    <tr><td rowspan="4"><strong>买入</strong></td><td>买①</td><td>均线走平/上升，股价从下方突破 → 买入</td></tr>
+    <tr><td>买②</td><td>股价跌破上升均线后快速收回 → 加码买入</td></tr>
+    <tr><td>买③</td><td>股价下跌未破均线，重现升势 → 买入</td></tr>
+    <tr><td>买④</td><td>股价跌破均线且远离均线 → 短期反弹机会</td></tr>
+    <tr><td rowspan="4"><strong>卖出</strong></td><td>卖①</td><td>均线走平/下降，股价从上方跌破 → 卖出</td></tr>
+    <tr><td>卖②</td><td>股价反弹突破均线后快速回落 → 卖出</td></tr>
+    <tr><td>卖③</td><td>股价向均线弹升未突破即受阻 → 卖出</td></tr>
+    <tr><td>卖④</td><td>股价急速上涨远离均线 → 卖出（涨太快太远必回归）</td></tr>
+  </table>
+
+  <h3>🧩 均线形态速查</h3>
+  <ul>
+    <li><strong>井型</strong>：5/10日平行上穿20/30日 → 买入信号；</li>
+    <li><strong>死亡谷</strong>：10/20/30日围成尖头朝下的三角 → 见顶下跌；</li>
+    <li><strong>银山谷 / 金山谷</strong>：10/20日上穿30日，两次确认后为金山谷 → 主升浪；</li>
+    <li><strong>金蜘蛛 / 毒蜘蛛</strong>：5/10/20日同时金叉 / 死叉于一点；</li>
+    <li><strong>多头 / 空头陷阱</strong>：均线假突破诱多/诱空，多出现在行情初期。</li>
+  </ul>
+
+  <div class="tip">💡 <strong>实战要点</strong>：手册中最常用的简单规则是——<strong>20日均线是强弱分水岭</strong>。指数站上 20 日线且量能配合 → 偏多思维；跌破 20 日线且 3 日收不回 → 降低仓位（见第 20 章决策规则）。</div>
+</section>
+
+<section id="ch7">
+  <h2 class="sec-title"><span class="num">7</span>成交量：一切信号的"验钞机"</h2>
+  <p class="sec-sub">模块二 · 技术分析（源：第39–41期）| 量在价先</p>
+
+  <p>技术分析里有一句老话：<strong>量在价先</strong>。成交量反映买卖双方的分歧程度——放量说明分歧大、有人抢着买也有人抢着卖；缩量说明大家意见一致（要么惜售，要么无人问津）。手册把量价关系做成了<strong>九宫格口诀</strong>：</p>
+
+  <div class="fig">
+    <table style="margin:0">
+      <tr><th style="width:14%">价格＼量能</th><th>放量</th><th>平量</th><th>缩量</th></tr>
+      <tr><td><strong>上涨</strong></td><td>机会多，但顶部要防守</td><td>能维持，起点终点有量变</td><td>难维持，下跌末期多关注</td></tr>
+      <tr><td><strong>横盘</strong></td><td>有矛盾，天量等未来升</td><td>冷淡市，横久必跌</td><td>无行情，只等后续好球区</td></tr>
+      <tr><td><strong>下跌</strong></td><td>不接刀，除非历史大底</td><td>淡后市，下跌中继少参与</td><td>是调整，地量地价可以等</td></tr>
+    </table>
+    <div class="fig-caption"><b>图 7-1</b> · 量价关系口诀表（源：第40期）：先看价，再看量，最后看位置</div>
+  </div>
+
+  <h3>📶 换手率信号（活跃度分级）</h3>
+  <table>
+    <tr><th style="width:26%">换手率</th><th style="width:38%">含义</th><th>操作提示</th></tr>
+    <tr><td>3%–7%</td><td>进入活跃状态</td><td>可关注</td></tr>
+    <tr><td>7%–10%</td><td>强势活跃阶段</td><td>趋势大概率延续</td></tr>
+    <tr><td>10%–15%</td><td>大资金密集博弈</td><td>价格可能突破</td></tr>
+    <tr><td>15%以上且持续</td><td>极端活跃</td><td>可能成为黑马（也警惕见顶）</td></tr>
+  </table>
+
+  <h3>⚔️ 成交量四大"必杀技"</h3>
+  <div class="grid">
+    <div class="gcard"><div class="ico">🗼</div><h5>立桩量</h5><p>底部/上升初期出现天量（换手&gt;10%），天量后 3 日不破最低点 → 机构强行建仓信号</p></div>
+    <div class="gcard"><div class="ico">⛰️</div><h5>放量过顶</h5><p>调整后放量突破前高 → 及时跟进；突破后不能深度回调，否则转 M 顶</p></div>
+    <div class="gcard"><div class="ico">🕳️</div><h5>散兵坑（黄金坑）</h5><p>上升趋势中突然缩量大坑 → 空头陷阱/洗盘，"老兵才敢跳"</p></div>
+    <div class="gcard"><div class="ico">🪜</div><h5>底量超顶量</h5><p>底部成交量超过前一波顶部成交量 → 大概率开启上涨行情</p></div>
+  </div>
+
+  <div class="story">📖 <strong>早课故事（立桩量）</strong>：手册曾以比亚迪 2017/9/12 为例——当日换手率突破 10% 出现天量，之后 3 个交易日股价未跌破当天最低点，属于典型的机构强力建仓信号。知识库《放量缩量与上涨下跌象限》一课还补充：<strong>放量上涨</strong>在低位是进攻、在高位要防守；<strong>缩量上涨</strong>说明没人愿意卖、但也可能后继乏力——同样的量价形态，出现在不同位置，含义完全不同。</div>
+</section>
+
+<section id="ch8">
+  <h2 class="sec-title"><span class="num">8</span>MACD：趋势与动能的"仪表盘"</h2>
+  <p class="sec-sub">模块二 · 技术分析（源：第20、42–43期）| 最常用的摆动指标</p>
+
+  <p>MACD 由三条线组成：<strong>DIF（快线）</strong>、<strong>DEA（慢线）</strong>和<strong>红绿柱（动能）</strong>。0 轴是"春夏/秋冬"的分界线——<strong>手册铁律：只投 0 轴上方</strong>，0 轴上方是春夏行情，下方是秋冬行情。</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="250" x2="670" y2="250" stroke="#C9B79C" stroke-width="1.5" stroke-dasharray="5 5"/>
+      <text x="36" y="243" font-size="12" fill="#A0714F">0轴（春夏/秋冬分界）</text>
+      <polyline points="60,300 130,290 190,280 250,265 310,245 370,215 430,185 490,175 550,180 610,195" stroke="#E9B44C" stroke-width="2.5" fill="none"/>
+      <polyline points="60,310 130,300 190,295 250,282 310,268 370,250 430,225 490,210 550,205 610,212" stroke="#5E9FC4" stroke-width="2.5" fill="none"/>
+      <g fill="#F2764E">
+        <rect x="56" y="285" width="16" height="35" rx="3"/><rect x="80" y="290" width="16" height="30" rx="3"/>
+        <rect x="104" y="295" width="16" height="25" rx="3"/><rect x="128" y="297" width="16" height="23" rx="3"/>
+        <rect x="152" y="290" width="16" height="30" rx="3"/><rect x="176" y="275" width="16" height="45" rx="3"/>
+      </g>
+      <g fill="#7FA96B">
+        <rect x="280" y="252" width="16" height="40" rx="3"/><rect x="304" y="258" width="16" height="34" rx="3"/>
+        <rect x="328" y="262" width="16" height="30" rx="3"/><rect x="352" y="265" width="16" height="27" rx="3"/>
+      </g>
+      <g fill="#F2764E">
+        <rect x="404" y="230" width="16" height="52" rx="3"/><rect x="428" y="210" width="16" height="72" rx="3"/>
+        <rect x="452" y="196" width="16" height="86" rx="3"/><rect x="476" y="192" width="16" height="90" rx="3"/>
+        <rect x="500" y="198" width="16" height="84" rx="3"/><rect x="524" y="212" width="16" height="70" rx="3"/>
+        <rect x="548" y="228" width="16" height="54" rx="3"/>
+      </g>
+      <g font-size="12.5" fill="#D95B33" font-weight="800">
+        <text x="180" y="120" text-anchor="middle">① 金叉：DIF上穿DEA（0轴上更可靠）</text>
+        <text x="470" y="120" text-anchor="middle">② 0轴上方红柱：春夏做多区</text>
+      </g>
+      <g font-size="12.5" fill="#3D7292">
+        <text x="310" y="330" text-anchor="middle">③ 死叉：DIF下穿DEA → 减仓</text>
+      </g>
+      <text x="180" y="150" font-size="12" text-anchor="middle" fill="#A0714F">快线DIF</text>
+      <text x="470" y="150" font-size="12" text-anchor="middle" fill="#A0714F">慢线DEA</text>
+      <text x="470" y="332" font-size="12" text-anchor="middle" fill="#A0714F">红柱=多头动能，绿柱=空头动能</text>
+    </svg>
+    <div class="fig-caption"><b>图 8-1</b> · MACD 结构示意：金叉死叉 + 0轴 + 红绿柱（示意，非真实行情）</div>
+  </div>
+
+  <h3>🚦 五大核心战法</h3>
+  <ol>
+    <li><strong>顶背离卖，底背离买</strong>：股价创新高但 MACD 高点降低 = 顶背离（动能衰竭）→ 卖；股价创新低但 MACD 低点抬高 = 底背离 → 买。日线和 60 分钟线的背离最有操作价值。</li>
+    <li><strong>二次金叉坚决买，二次死叉坚决卖</strong>：0 轴附近的第一次是"试盘"，第二次才要果断出手。</li>
+    <li><strong>只投 0 轴上方</strong>：0 轴上方为春夏（做多季节），下方为秋冬（休息季节）。</li>
+    <li><strong>风洞买入法</strong>：MACD 先死叉后快速金叉，红柱快速放大形成"网兜" → 买入。</li>
+    <li><strong>红绿灯</strong>：红柱最长开始缩短 → 短线顶；绿柱最长开始缩短 → 短线底。</li>
+  </ol>
+
+  <h3>🧬 八种实战形态（读懂主力"剧本"）</h3>
+  <table>
+    <tr><th style="width:18%">形态</th><th>特征</th><th style="width:26%">操作含义</th></tr>
+    <tr><td>烽火连天</td><td>0轴下上穿后直飞，红柱连绵</td><td>二波红柱是介入时机</td></tr>
+    <tr><td>佛手向上</td><td>金叉后 DIF 回调碰 DEA 不破继续向上</td><td>强势中继，持股</td></tr>
+    <tr><td>小鸭出水</td><td>0轴下金叉→回落死叉→再次金叉</td><td>见底信号</td></tr>
+    <tr><td>漫步青云</td><td>0轴上死叉下穿0轴又上穿金叉</td><td>探底回升</td></tr>
+    <tr><td>天鹅展翅</td><td>0轴下金叉未上0轴即回调，不出死叉继续向上</td><td>底部信号</td></tr>
+    <tr><td>空中缆绳</td><td>0轴金叉后 DIF 调整不击穿 DEA，搓绳横盘</td><td>上涨中继</td></tr>
+    <tr><td>海底电缆</td><td>0轴下 MACD 长期纠缠搓绳，底部蓄力</td><td>向上发散时买入</td></tr>
+    <tr><td>海底捞月</td><td>0轴下两次金叉，形成 W 型</td><td>底部确认，择机介入</td></tr>
+  </table>
+
+  <div class="story">📖 <strong>早课故事（MACD案例）</strong>：2024 年 8–9 月，创业板指数日线 MACD 在 0 轴下方走出"海底电缆"形态——长期纠缠搓绳后向上发散，随后迎来一轮强劲反弹；2025/1/8 创业板分时 MACD 出现背离，当时的急杀被手册解读为"诛心杀"（空头陷阱），事后证明是洗盘。这就是背离 + 形态组合判断的价值。</div>
+</section>
+
+<section id="ch9">
+  <h2 class="sec-title"><span class="num">9</span>KDJ：超买超卖的"体温计"</h2>
+  <p class="sec-sub">模块二 · 技术分析（源：第21–22、45期）| 抓买卖拐点</p>
+
+  <p>KDJ 是灵敏的短线指标：<strong>K 值上穿 D 值=金叉（买），下穿=死叉（卖）</strong>；K 值 80 以上超买，20 以下超卖；J 值最敏感，超过 100 或低于 0 参考意义更大。手册特别强调：<strong>周线、月线 KDJ 对大级别的指导意义远大于日线</strong>——看大级别定方向，看日线找时机。</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="60" x2="660" y2="60" stroke="#D9534F" stroke-width="1.2" stroke-dasharray="5 5"/>
+      <text x="44" y="52" font-size="12" fill="#D9534F">80 超买</text>
+      <line x1="40" y1="160" x2="660" y2="160" stroke="#C9B79C" stroke-width="1.2" stroke-dasharray="5 5"/>
+      <text x="44" y="152" font-size="12" fill="#A0714F">50 多空界</text>
+      <line x1="40" y1="240" x2="660" y2="240" stroke="#7FA96B" stroke-width="1.2" stroke-dasharray="5 5"/>
+      <text x="44" y="232" font-size="12" fill="#4E7A3C">20 超卖</text>
+      <polyline points="60,210 120,190 180,170 240,140 300,120 360,100 420,90 480,130 540,150 600,120" stroke="#E9B44C" stroke-width="2.5" fill="none"/>
+      <polyline points="60,220 120,205 180,190 240,165 300,150 360,135 420,120 480,150 540,160 600,145" stroke="#5E9FC4" stroke-width="2.5" fill="none"/>
+      <polyline points="60,200 120,170 180,145 240,105 300,80 360,55 420,45 480,110 540,140 600,90" stroke="#F2764E" stroke-width="2" fill="none"/>
+      <g font-size="12.5" fill="#A0714F">
+        <text x="160" y="270" text-anchor="middle">低位区（&lt;20）金叉向上 → 机会</text>
+        <text x="460" y="40" text-anchor="middle">高位区（&gt;80）死叉向下 → 风险</text>
+      </g>
+      <circle cx="240" cy="140" r="26" fill="none" stroke="#7FA96B" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <circle cx="420" cy="90" r="26" fill="none" stroke="#D9534F" stroke-width="1.5" stroke-dasharray="3 3"/>
+    </svg>
+    <div class="fig-caption"><b>图 9-1</b> · KDJ 示意：低位金叉买、高位死叉卖（示意，非真实行情）</div>
+  </div>
+
+  <h3>🧭 日/周/月线六种组合（定仓位）</h3>
+  <p>这是手册最实用的 KDJ 用法——把<strong>三个周期放在一起看</strong>，直接给出仓位建议：</p>
+  <table>
+    <tr><th style="width:14%">形态</th><th>信号条件</th><th style="width:24%">操作</th></tr>
+    <tr><td>形态一</td><td>日D&lt;20金叉 + 周J&lt;20向上 + 月KDJ低位向上</td><td><strong>可重仓</strong>，坚定入场</td></tr>
+    <tr><td>形态二</td><td>日线高位运行 + 周/月线低位</td><td>等日线回落后建仓（可大举建仓）</td></tr>
+    <tr><td>形态三</td><td>日金叉 + 周J在90 + 月J在80以上</td><td>短时主升，轻仓参与随时撤离</td></tr>
+    <tr><td>形态四</td><td>日金叉 + 周向上 + 月向下</td><td>反弹行情，少量参与不重仓</td></tr>
+    <tr><td>形态五</td><td>日金叉 + 周向下 + 月向上</td><td>弱反弹不参与，混沌等同向</td></tr>
+    <tr><td>形态六</td><td>日/周/月同时高位（周J&gt;90，月J&gt;80）</td><td><strong>必须撤离</strong></td></tr>
+  </table>
+
+  <h3>🔍 补充形态（第45期）</h3>
+  <div class="grid">
+    <div class="gcard"><div class="ico">💀</div><h5>死地后生</h5><p>D值&lt;15 严重超跌 → 暴力反弹概率大</p></div>
+    <div class="gcard"><div class="ico">🦪</div><h5>东海明珠</h5><p>K/D&lt;20，5根K线内金叉 → 水下捞金</p></div>
+    <div class="gcard"><div class="ico">🌀</div><h5>空中回旋</h5><p>首次死叉后 K 在 50 附近重新金叉 → 第二波上涨</p></div>
+    <div class="gcard"><div class="ico">⏳</div><h5>高低位徘徊</h5><p>80 附近纠缠=持股；20–50 反复=易亏时段</p></div>
+  </div>
+
+  <div class="story">📖 <strong>早课故事（KDJ案例）</strong>：2024/1/7 前后，深成指 KDJ 的 D 值跌至 20 以下（超卖区），随后 1 月 13 日出现金叉并向上运行——日线低位金叉叠加周线企稳，构成形态一（可重仓）级别的机会。手册也提醒：<strong>月周日同时高位死叉向下 → 果断空仓</strong>，这是"撤离形态六"的极端版。</div>
+</section>
+
+<section id="ch10">
+  <h2 class="sec-title"><span class="num">10</span>BOLL布林带：股价的"走廊"</h2>
+  <p class="sec-sub">模块二 · 技术分析（源：第46–47期）| 理解波动边界</p>
+
+  <p>布林带由三条线组成：<strong>中轨（20日均线）</strong> + 上下轨（中轨 ± 2 倍标准差）。约 95% 的股价运行在通道内，所以它像一条"走廊"：<strong>触上轨=超买，触下轨=超卖，中轨=强弱分水岭</strong>。</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40,120 C 140,110 220,100 300,90 C 380,80 460,95 540,110 C 590,120 630,130 660,140" stroke="#D9534F" stroke-width="2" fill="none"/>
+      <path d="M40,160 C 140,155 220,150 300,145 C 380,140 460,150 540,160 C 590,165 630,170 660,175" stroke="#E9B44C" stroke-width="2.5" fill="none" stroke-dasharray="6 3"/>
+      <path d="M40,200 C 140,200 220,200 300,200 C 380,200 460,205 540,210 C 590,215 630,218 660,222" stroke="#7FA96B" stroke-width="2" fill="none"/>
+      <polyline points="60,175 130,150 200,130 270,120 340,135 410,110 480,125 550,150 620,180" stroke="#F2764E" stroke-width="3" fill="none"/>
+      <g font-size="12.5" fill="#A0714F">
+        <text x="668" y="110" fill="#D9534F" font-weight="800">上轨(超买)</text>
+        <text x="668" y="177" fill="#A06B1C" font-weight="800">中轨(20日线)</text>
+        <text x="668" y="224" fill="#4E7A3C" font-weight="800">下轨(超卖)</text>
+        <text x="300" y="40" text-anchor="middle" font-size="14" fill="#8A4B23" font-weight="700">收口（变盘前兆）→ 开口（趋势加速）</text>
+      </g>
+      <path d="M40,270 L660,270" stroke="#EAD9C0" stroke-width="1" stroke-dasharray="4 4"/>
+      <text x="300" y="288" text-anchor="middle" font-size="12" fill="#A0714F">通道越窄越要变盘；三轨同向向上时，回踩下轨是买点</text>
+    </svg>
+    <div class="fig-caption"><b>图 10-1</b> · 布林带示意：股价在走廊内运行，中轨定强弱（示意，非真实行情）</div>
+  </div>
+
+  <h3>📣 三轨形态与喇叭口</h3>
+  <table>
+    <tr><th style="width:24%">形态</th><th>特征</th><th style="width:30%">操作含义</th></tr>
+    <tr><td>三轨同向向上</td><td>强势特征明显</td><td>每次回踩下轨是买入机会</td></tr>
+    <tr><td>三轨同向向下</td><td>弱势市场</td><td>反弹到中轨/上轨都是卖出机会</td></tr>
+    <tr><td>开口型喇叭</td><td>长期盘整后急涨、通道急剧扩张</td><td>趋势加速，需量能配合</td></tr>
+    <tr><td>收口型喇叭</td><td>急涨后价格收敛</td><td>趋势告一段落</td></tr>
+    <tr><td>紧口型喇叭</td><td>持续盘整、成交萎靡</td><td>平稳期，可埋伏等变盘</td></tr>
+  </table>
+
+  <div class="koujue">冲出上轨要回调，跌出下轨有反抽；<br>强势中上轨运行，弱势总在中轨下；<br>轨道变窄要突变，开口越大回调越明显。</div>
+
+  <div class="story">📖 <strong>早课故事（BOLL案例）</strong>：沪深300 在三轨同向向上的阶段，每次回踩下轨都是买点，跟着做胜率明显提升；而 2025 年初市场多次"放量破中轨却无量假突破"，手册提示这是布林带"假突破"——<strong>放量突破中轨向上才可买入，无量则容易反复</strong>。</div>
+</section>
+
+<section id="ch11">
+  <h2 class="sec-title"><span class="num">11</span>辅助指标：DMI 与神奇九转</h2>
+  <p class="sec-sub">模块二 · 技术分析（源：第23、44期）| 锦上添花的信号源</p>
+
+  <h3>🧭 DMI：趋势强度的"测速仪"</h3>
+  <table>
+    <tr><th style="width:34%">信号</th><th>含义</th></tr>
+    <tr><td>ADX &gt; 25</td><td>趋势行情（趋势指标有效）</td></tr>
+    <tr><td>ADX &lt; 20</td><td>震荡行情（趋势指标失真）</td></tr>
+    <tr><td>ADX 到 60 附近</td><td>趋势可能"刹车"</td></tr>
+    <tr><td>ADX 到 80 以上</td><td>必须行动（极端加速，随时反转）</td></tr>
+    <tr><td>ADX 下穿 ADXR</td><td>趋势可能结束（比 MACD 更早预警）</td></tr>
+    <tr><td>四线均&lt;50 且 ADX&lt;25</td><td>温和震荡，技术分析效果大降 → 休息或轻仓</td></tr>
+  </table>
+
+  <h3>9️⃣ 神奇九转：数到 9 的"节拍器"</h3>
+  <p>当股价<strong>连续 9 天收盘价高于（或低于）4 天前的收盘价</strong>，就形成"高九"（该卖了）或"低九"（该买了）序列：</p>
+  <ul>
+    <li>震荡市准确率较高，单边市容易失效；</li>
+    <li><strong>周线九转比日线九转更有指导意义</strong>；</li>
+    <li>九转"失效"时，往往预示最后一涨或最后一跌（极端行情）。</li>
+  </ul>
+
+  <div class="story">📖 <strong>早课故事（九转案例）</strong>：2014 年单边上涨行情中，多个板块出现"高九"后并未立刻回调，而是横盘后继续上涨——说明<strong>单边市里九转会钝化</strong>。手册的结论是：牛市主升段低九有效、高九易失效，要配合均线和量能综合判断，绝不单用。</div>
+
+  <div class="warn">⚠️ <strong>手册反复强调</strong>：任何单一指标都有盲区。MACD 适合趋势、KDJ 适合拐点、BOLL 适合波动、量价验证真伪——<strong>多指标共振 + 位置判断</strong>，才是手册的用法。</div>
+</section>
+
+<!-- ================= 第三部分 ================= -->
+<section id="ch12">
+  <h2 class="sec-title"><span class="num">12</span>价值 vs 成长：看懂"三年一换"的风格轮动</h2>
+  <p class="sec-sub">模块三 · 基本面分析（源：第24–25期）| 选对风格赛道</p>
+
+  <p>A股市场有一个明显的现象：<strong>价值风格与成长风格大约三年一轮换</strong>。押对风格，事半功倍；押错风格，牛市也可能不赚钱。</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 700 190" xmlns="http://www.w3.org/2000/svg">
+      <g font-size="13.5" font-weight="700" text-anchor="middle">
+        <rect x="40" y="30" width="150" height="64" rx="12" fill="#EAF3E4" stroke="#7FA96B"/>
+        <text x="115" y="56" fill="#4E7A3C">2013–2015 成长占优</text>
+        <text x="115" y="78" fill="#7A9A68" font-size="12" font-weight="400">互联网/白酒/医药</text>
+        <rect x="210" y="30" width="150" height="64" rx="12" fill="#E6F1F7" stroke="#5E9FC4"/>
+        <text x="285" y="56" fill="#3D7292">2016–2018 价值占优</text>
+        <text x="285" y="78" fill="#7C9FBE" font-size="12" font-weight="400">漂亮50/银行地产</text>
+        <rect x="380" y="30" width="150" height="64" rx="12" fill="#EAF3E4" stroke="#7FA96B"/>
+        <text x="455" y="56" fill="#4E7A3C">2019–2021 成长占优</text>
+        <text x="455" y="78" fill="#7A9A68" font-size="12" font-weight="400">新能源/半导体</text>
+        <rect x="550" y="30" width="150" height="64" rx="12" fill="#E6F1F7" stroke="#5E9FC4"/>
+        <text x="625" y="56" fill="#3D7292">2022–2024 价值占优</text>
+        <text x="625" y="78" fill="#7C9FBE" font-size="12" font-weight="400">煤炭/金融/中字头</text>
+      </g>
+      <g font-size="12" fill="#A0714F" text-anchor="middle">
+        <text x="115" y="120">成长</text><text x="285" y="120">价值</text><text x="455" y="120">成长</text><text x="625" y="120">价值</text>
+      </g>
+      <path d="M115 105 C 200 128, 230 128, 285 105 S 430 128, 455 105 S 600 128, 625 105" stroke="#E9B44C" stroke-width="2.5" fill="none" stroke-dasharray="6 4"/>
+      <text x="350" y="165" text-anchor="middle" font-size="13" fill="#8A4B23" font-weight="700">≈3年一轮换 · 2025起留意风格切换信号</text>
+    </svg>
+    <div class="fig-caption"><b>图 12-1</b> · 风格轮动规律：价值与成长交替占优（2013–2024 历史统计）</div>
+  </div>
+
+  <h3>🏦 大盘价值：什么时候配置？</h3>
+  <p>价值风格占优的三个条件：① 成长风格全面回落；② 政策稳增长发力；③ 价值股 PE 处于历史低位。<strong>配置逻辑</strong>：稳定分红、类债券属性，是熊市中的"稳压器"。2023 年后价值风格不再单纯依赖债券资金，"新国九条"带来了分红机制变革，红利资产的长期价值被重新定价。</p>
+
+  <h3>🚀 中小盘成长：什么时候受益？</h3>
+  <p>六个条件（满足越多越有利）：① 货币宽松（M1 回升 + 美元回落）；② 信用变化（社融触底预期）；③ 增量资金流入；④ 良好产业政策；⑤ 景气周期启动；⑥ 相对估值合理不过热。</p>
+
+  <div class="key">⭐ <strong>一句话</strong>：价值股看"稳"（分红、估值、政策），成长股看"势"（货币、政策、景气、资金）。新手可以先用"风格轮动"这个大框架定方向，再用下一章的行业遴选细化。</div>
+</section>
+
+<section id="ch13">
+  <h2 class="sec-title"><span class="num">13</span>行业遴选三步法：给行业"体检"</h2>
+  <p class="sec-sub">模块三 · 基本面分析（源：第26–29期）| 解决"选哪个行业"</p>
+
+  <div class="steps">
+    <div class="step"><b>定性</b><span>看行业属性和财务特征，选适配的估值方法</span></div>
+    <div class="step"><b>看生命周期</b><span>看渗透率阶段：破壁期 / 高速期 / 饱和期</span></div>
+    <div class="step"><b>定量估值</b><span>用对应估值法算出贵不贵、值不值</span></div>
+  </div>
+
+  <h3>🧮 不同行业用不同估值尺子</h3>
+  <table>
+    <tr><th style="width:28%">行业</th><th>适用估值法</th></tr>
+    <tr><td>半导体</td><td>PEG + PE(TTM)</td></tr>
+    <tr><td>5G通信</td><td>PE(TTM)</td></tr>
+    <tr><td>新能源</td><td>PE(TTM)</td></tr>
+    <tr><td>创新药</td><td>PS(TTM)</td></tr>
+    <tr><td>人工智能</td><td>PE(TTM) + PEG</td></tr>
+    <tr><td>传统行业</td><td>PE / PB / 股息率</td></tr>
+  </table>
+
+  <h3>📐 好行业三因子公式</h3>
+  <div class="koujue">好行业 = EPS + G + I</div>
+  <ul>
+    <li><strong>E</strong>（EPS）：每股净收益增长——赚不赚钱、赚得越来越快吗？</li>
+    <li><strong>G</strong>（Growth）：新概念、新题材——有没有想象空间？</li>
+    <li><strong>I</strong>（Institution）：机构认可度——看前十大流通股东，聪明钱在不在？</li>
+  </ul>
+
+  <h3>📡 主题行业的"提词器"（跟着政策节奏走）</h3>
+  <div class="flow">
+    <div class="flow-node cond">① 重要会议定方向</div><div class="flow-arrow">→</div>
+    <div class="flow-node">② 部门文件抓落实</div><div class="flow-arrow">→</div>
+    <div class="flow-node">③ 资金流向验证</div><div class="flow-arrow">→</div>
+    <div class="flow-node act">④ 产业链传导</div>
+  </div>
+  <p>这条链路是"政策主题"的完整生命周期。手册特别提示的<strong>自主可控安全主题</strong>三要素：技术/设备可控（信创产业链：基础硬件+基础软件+应用软件+网络安全）、能源可控（煤炭+新能源双轨，锂/钴/铜/铝等上游矿物）、以及从碳中和到低空经济的"经济+安全"双轮驱动。</p>
+</section>
+
+<section id="ch14">
+  <h2 class="sec-title"><span class="num">14</span>渗透率框架：行业处在"哪个年纪"？</h2>
+  <p class="sec-sub">模块三 · 基本面分析（源：第28期）| 判断行业空间与估值容忍度</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sCurve" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#5E9FC4"/><stop offset=".5" stop-color="#E9B44C"/><stop offset="1" stop-color="#F2764E"/>
+        </linearGradient>
+      </defs>
+      <rect x="50" y="40" width="600" height="200" rx="12" fill="#FFFDF8" stroke="#EFE6D8"/>
+      <path d="M70 220 C 180 220, 260 218, 320 200 C 400 175, 460 120, 520 70 C 560 44, 600 36, 640 34" fill="none" stroke="url(#sCurve)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="70" y1="210" x2="640" y2="210" stroke="#C9B79C" stroke-width="1" stroke-dasharray="4 4"/>
+      <text x="70" y="202" font-size="11" fill="#A0714F">0%</text>
+      <line x1="330" y1="220" x2="330" y2="34" stroke="#E9B44C" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <text x="336" y="110" font-size="11" fill="#A06B1C">20%</text>
+      <line x1="460" y1="220" x2="460" y2="34" stroke="#E9B44C" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <text x="466" y="60" font-size="11" fill="#A06B1C">40%</text>
+      <g font-size="12.5" text-anchor="middle" font-weight="700">
+        <text x="190" y="260" fill="#3D7292">破壁渗透期（&lt;20%）</text>
+        <text x="395" y="260" fill="#A06B1C">高速渗透期（20%→40%）</text>
+        <text x="560" y="260" fill="#D95B33">饱和渗透期（&gt;40%）</text>
+      </g>
+      <g font-size="11.5" fill="#7A9A68" text-anchor="middle">
+        <text x="190" y="280">政策/技术驱动 · 估值60–120倍 · 只看PEG</text>
+        <text x="395" y="280">边际效用递减 · PE+盈利双增</text>
+        <text x="560" y="280">看盈利稳定度 · PE(TTM)</text>
+      </g>
+    </svg>
+    <div class="fig-caption"><b>图 14-1</b> · 渗透率 S 曲线：行业不同阶段，估值逻辑完全不同</div>
+  </div>
+
+  <table>
+    <tr><th style="width:22%">阶段</th><th style="width:26%">特征</th><th>估值与打法</th></tr>
+    <tr><td><strong>破壁渗透期</strong>（&lt;20%）</td><td>0→10 突破期，政策/技术驱动</td><td>估值 60–120 倍很正常，只看 PEG，别用 PE 吓自己</td></tr>
+    <tr><td><strong>高速渗透期</strong>（20%→40%）</td><td>10→100 发展期，边际效用递减</td><td>PE + 盈利双增，戴维斯双击的主场</td></tr>
+    <tr><td><strong>饱和渗透期</strong>（&gt;40%）</td><td>市场成熟，增速放缓</td><td>回到盈利稳定度和 PE(TTM)，讲故事阶段结束</td></tr>
+  </table>
+
+  <h3>🌡️ 景气度判断四维度</h3>
+  <ol>
+    <li><strong>政策景气度</strong>：政策是否持续加码？</li>
+    <li><strong>行业景气度</strong>：行业数据（销量、价格、排产）是否向上？</li>
+    <li><strong>企业景气度</strong>：龙头公司订单、业绩是否兑现？</li>
+    <li><strong>价格信号</strong>：产品价格是否上涨（量价齐升最健康）？</li>
+  </ol>
+
+  <div class="tip">💡 <strong>结合理解</strong>：这一章解释了手册早课中"买生还是买熟"的底层逻辑——生资产（渗透率早期）想象空间大但认知难度高，熟资产（渗透率成熟）确定性高但空间有限。进阶做法：<strong>在熟资产里找被低估的，在生资产里找能看懂的</strong>。</div>
+</section>
+
+<section id="ch15">
+  <h2 class="sec-title"><span class="num">15</span>操作系统：把你的交易变成"规则"</h2>
+  <p class="sec-sub">模块四 · 操作系统（源：第11、13–14期）| 从"凭感觉"到"按章办事"</p>
+
+  <p>手册给"操作系统"下了一个严格定义：<strong>一套关于入场、离场、买卖、止损止盈的信号规则总和</strong>。它必须满足两个必要条件：</p>
+  <div class="grid">
+    <div class="gcard"><div class="ico">✅</div><h5>完备性</h5><p>任何交易日，你都能在系统中找到"现在该买/该卖/该持有/几成仓"的明确答案</p></div>
+    <div class="gcard"><div class="ico">🔗</div><h5>对应性</h5><p>每一笔买入，必然对应一笔未来的卖出条件——绝不能"边走边看"</p></div>
+  </div>
+
+  <h3>🌊 动态操作系统：不同市况，不同打法</h3>
+  <table>
+    <tr><th style="width:16%">周期</th><th style="width:38%">识别特征</th><th>应对</th></tr>
+    <tr><td><strong>强势周期</strong></td><td>量能大、指数&gt;20日线、多头排列</td><td>大部分资金布局中线方向 + 短线热点 + 留备用金</td></tr>
+    <tr><td><strong>弱势周期</strong></td><td>缩量、指数&lt;20日线、空头排列</td><td>不做布局，或只做超跌反弹</td></tr>
+    <tr><td><strong>平衡周期</strong></td><td>量能不高不低、K线不上不下</td><td>中低仓位，做结构机会/热点/冷灶</td></tr>
+    <tr><td><strong>极端周期</strong></td><td>极端顶/底、牛熊转势</td><td>高位泡沫要离场，极端底部要出手</td></tr>
+  </table>
+
+  <h3>👁️ 趋势判断三重境界（新手只练第一重）</h3>
+  <ul>
+    <li><strong>第一重（中期/必备）</strong>：判断三个月大方向，周线级别，正确率 80% 就能避免原则性错误；</li>
+    <li><strong>第二重（短期）</strong>：判断未来几周，日线级别，进阶者使用；</li>
+    <li><strong>第三重（细节）</strong>：分时线，<strong>不适合大多数人</strong>，容易迷失在噪音里。</li>
+  </ul>
+
+  <h3>⚖️ 操作系统权重因子（你的"扣分项"在哪？）</h3>
+  <div class="koujue">100% = 趋势判断30% + 行业选择20% + 操作管理20% + 风险控制20% + 资金管理10%</div>
+  <p><strong>哪个环节做错了，就停掉对应比例的资金</strong>——比如你发现自己行业总选错，就把行业选择对应的 20% 资金停掉，直到研究清楚再恢复。这是手册非常独特的"分模块风控"思想。</p>
+
+  <div class="story">📖 <strong>早课故事（稳健系统）</strong>：手册建议只做两类行情——<strong>大级别牛市</strong>（年份尾数 5/6/7/9 + 政策拐点 + 30日线多头）和<strong>结构牛</strong>（如 2019 年新能源行情）。核心心法是"只吃鱼身，弱水三千取一瓢"——不追求从鱼头吃到鱼尾，赚到中间最稳的一段就够了。</div>
+</section>
+
+<section id="ch16">
+  <h2 class="sec-title"><span class="num">16</span>九宫格仓位管理：震荡市的"驾驶舱"</h2>
+  <p class="sec-sub">模块四 · 操作系统（源：第4期）| 仓位跟着市况走</p>
+
+  <p>震荡市是牛市的常态（三步一回头才是健康），所以手册专门设计了<strong>九宫格仓位管理表</strong>——按"操作周期 × 仓位档位"给出行车指令：</p>
+
+  <div class="fig">
+    <table style="margin:0">
+      <tr><th style="width:16%">仓位＼周期</th><th>短线</th><th>中线</th><th>长线</th></tr>
+      <tr><td><strong>轻仓</strong><br><span style="font-size:12px;color:#A0714F">15%以内</span></td><td>熊震荡<br><span style="font-size:12px;color:#A0714F">30日线下 + 熊周期</span></td><td>熊市</td><td>大级别顶部</td></tr>
+      <tr><td><strong>中仓</strong><br><span style="font-size:12px;color:#A0714F">40%左右</span></td><td>牛震荡1<br><span style="font-size:12px;color:#A0714F">10日线下、30日线上</span></td><td>震荡牛<br><span style="font-size:12px;color:#A0714F">30日线上 + 牛周期</span></td><td>大震荡<br><span style="font-size:12px;color:#A0714F">指标相悖</span></td></tr>
+      <tr><td><strong>重仓</strong><br><span style="font-size:12px;color:#A0714F">70%以内</span></td><td>牛震荡2<br><span style="font-size:12px;color:#A0714F">10日+30日线上</span></td><td>波段牛<br><span style="font-size:12px;color:#A0714F">周线上涨</span></td><td>牛市 / 熊极<br><span style="font-size:12px;color:#A0714F">月线上涨 / 大级别底部</span></td></tr>
+    </table>
+    <div class="fig-caption"><b>图 16-1</b> · 九宫格仓位表：先定周期，再定仓位，永远不满仓</div>
+  </div>
+
+  <h3>📌 震荡市四大要点</h3>
+  <ol>
+    <li><strong>重识大势</strong>——先判断牛还是熊、震荡还是趋势；</li>
+    <li><strong>做好心理预期与纪律</strong>——震荡市磨人，预期管理比选股更重要；</li>
+    <li><strong>按九宫格执行仓位管理</strong>——不越位、不冲动；</li>
+    <li><strong>短线聚焦大盘指数变化</strong>——指数是震荡市的"总开关"。</li>
+  </ol>
+
+  <h3>🔺 正金字塔加仓 vs 倒金字塔（盈亏分水岭）</h3>
+  <div class="flow">
+    <div class="flow-node act">✅ 正金字塔<br><span style="font-weight:400;font-size:12.5px">底仓30% → 越跌加越多（10%→20%→30%）<br>降成本、留子弹</span></div>
+    <div class="flow-arrow">VS</div>
+    <div class="flow-node alert">❌ 倒金字塔<br><span style="font-weight:400;font-size:12.5px">越涨越买、越跌越卖<br>底部轻仓、高位重仓——亏损根源</span></div>
+  </div>
+  <div class="story">📖 <strong>早课故事（加仓算术）</strong>：100 元的股票买 10 份，跌 20% 到 80 元后加仓 5 份，持仓均价从 100 元摊到约 93 元——正金字塔让成本越摊越低；反之，越涨越买会把成本越抬越高，2021 年 1–2 月很多人在头部位置重仓，就是倒金字塔的典型悲剧。</div>
+</section>
+
+<section id="ch17">
+  <h2 class="sec-title"><span class="num">17</span>风险评估三问：先搞清楚"你是谁"</h2>
+  <p class="sec-sub">模块四 · 操作系统（源：第13期）| 仓位上限由你的家底决定</p>
+
+  <p>很多新手一上来就问"买什么"，手册却要求你先回答<strong>三个关于自己的问题</strong>：</p>
+
+  <div class="steps">
+    <div class="step"><b>问题一</b><span>有没有投资金额 <strong>50%</strong> 的固定资产？</span></div>
+    <div class="step"><b>问题二</b><span>有没有投资金额 <strong>100%</strong> 的备用金？</span></div>
+    <div class="step"><b>问题三</b><span>有没有投资资金 <strong>30%</strong> 的现金流？</span></div>
+  </div>
+
+  <table>
+    <tr><th style="width:22%">三问结果</th><th style="width:22%">类型</th><th>仓位参考</th></tr>
+    <tr><td>全部有</td><td><strong>保守型</strong></td><td>轻仓 15% 以内</td></tr>
+    <tr><td>部分有</td><td><strong>平衡型</strong></td><td>轻仓 15% 以内 / 中仓 40% 左右 / 重仓 70% 以内，永远不满仓</td></tr>
+    <tr><td>全部没有</td><td><strong>激进型</strong></td><td>仓位上限更低，先补足安全垫再谈进攻</td></tr>
+  </table>
+
+  <div class="warn">⚠️ <strong>新手最容易犯的错</strong>：把"生活费"当"投资金"。投资金必须是你<strong>亏光了也不影响生活</strong>的钱——手册原话："资金不超过风险承受范围"是风险管理的第一原则。</div>
+
+  <h3>🎣 彼得·林奇给业余投资者的三招（源：第48–49期）</h3>
+  <table>
+    <tr><th style="width:22%">策略</th><th>逻辑</th><th style="width:30%">举例</th></tr>
+    <tr><td><strong>铁锹策略</strong></td><td>淘金热里卖铁锹的人稳赚——买产业链中确定性受益的环节</td><td>AI 热潮买算力/芯片（英伟达式标的）</td></tr>
+    <tr><td><strong>一分钱不花策略</strong></td><td>买拥有"免费"新技术业务的传统公司——新技术失败不亏、成功大赚</td><td>传统车企+智能驾驶业务</td></tr>
+    <tr><td><strong>附带收益策略</strong></td><td>买通过新技术转型的传统行业公司</td><td>传统制造+AI 改造</td></tr>
+  </table>
+
+  <div class="key">⭐ <strong>学习提示</strong>：这三招很适合业余投资者——它们共同的特点是<strong>用"可理解的确定性"降低认知门槛</strong>，正好呼应"不懂不做、不熟不投"的八原则。</div>
+</section>
+
+<!-- ================= 第四部分 ================= -->
+<section id="ch18">
+  <h2 class="sec-title"><span class="num">18</span>风险管理：先学会不亏，再谈赚钱</h2>
+  <p class="sec-sub">模块五 · 风险管理（源：第16–18期）| 牛市的隐藏考题</p>
+
+  <p>牛市里人人都在谈"赚了多少"，但手册提醒：<strong>牛市是散户亏大钱的季节</strong>——因为牛市末期满仓追高，然后熊市初期一次亏光。风险管理的全部意义，就是让你<strong>活得久</strong>。</p>
+
+  <h3>🛡️ 风险分类与四原则</h3>
+  <div class="grid">
+    <div class="gcard"><div class="ico">🌪️</div><h5>系统性风险</h5><p>大盘级别的下跌，无法用选股规避，只能用仓位规避</p></div>
+    <div class="gcard"><div class="ico">🏢</div><h5>非系统性风险</h5><p>个股/行业风险，用分散配置规避</p></div>
+    <div class="gcard"><div class="ico">💧</div><h5>流动性风险</h5><p>想卖卖不掉（小盘股/停牌/极端行情），留足现金</p></div>
+    <div class="gcard"><div class="ico">😱</div><h5>情绪风险</h5><p>恐慌抛售/狂热追高，用纪律规避</p></div>
+  </div>
+
+  <p><strong>风险管理四原则</strong>（手册原话级别的重要）：</p>
+  <ol>
+    <li><strong>资金不超过风险承受范围</strong>（最重要）；</li>
+    <li><strong>仓位控制是最重要的风险管理工具</strong>；</li>
+    <li><strong>分散配置，避免单一重仓</strong>；</li>
+    <li><strong>切忌杠杆</strong>——杠杆会放大恐惧，让你在最该冷静时被迫出局。</li>
+  </ol>
+
+  <h3>📋 仓位管理六大纪律</h3>
+  <table>
+    <tr><th style="width:8%">#</th><th>纪律</th><th style="width:40%">为什么</th></tr>
+    <tr><td>1</td><td><strong>任何时候不满仓</strong></td><td>满仓=把命运交给市场，大跌时没有子弹也没有退路</td></tr>
+    <tr><td>2</td><td><strong>仓位与确定性匹配</strong></td><td>越确定越重仓，越模糊越轻仓</td></tr>
+    <tr><td>3</td><td><strong>中低仓位是常态</strong></td><td>重仓是稀缺状态，不是日常状态</td></tr>
+    <tr><td>4</td><td><strong>大跌加仓，大涨减仓</strong></td><td>买在下跌处、卖在上涨时的具体化</td></tr>
+    <tr><td>5</td><td><strong>仓位与风险承受能力挂钩</strong></td><td>先过第 17 章的三问</td></tr>
+    <tr><td>6</td><td><strong>12月天然需谨慎</strong></td><td>年末资金面、机构调仓，波动加大</td></tr>
+  </table>
+
+  <h3>🧾 操盘习惯：盘中三能力</h3>
+  <div class="flow">
+    <div class="flow-node cond">预判<br><span style="font-weight:400;font-size:12.5px">开盘前想好几种剧本</span></div><div class="flow-arrow">→</div>
+    <div class="flow-node">应对<br><span style="font-weight:400;font-size:12.5px">盘中按预案执行不临时起意</span></div><div class="flow-arrow">→</div>
+    <div class="flow-node act">当断则断<br><span style="font-weight:400;font-size:12.5px">该止损止损，该止盈止盈</span></div>
+  </div>
+  <p><strong>持仓两问</strong>：买错被套 → 问"大趋势变了吗？"；买对盈利 → 用格兰维尔八法逐步减仓。<strong>资金管理心法</strong>："留足有余，存人失地，人地结存"——先保本金，再谈收益。</p>
+
+  <div class="story">📖 <strong>早课故事（12月的教训）</strong>：手册多次提醒 12 月要谨慎——年末机构排名博弈、资金面收紧、业绩真空期，都是波动放大器。很多人在 12 月满仓吃调整，把全年的利润又还了回去。纪律不是限制你赚钱，而是保护你<strong>已经赚到的</strong>。</div>
+</section>
+
+<section id="ch19">
+  <h2 class="sec-title"><span class="num">19</span>投资心理：最大的敌人是你自己</h2>
+  <p class="sec-sub">模块五 · 风险管理（源：第18期）| 炒股就是炒心态</p>
+
+  <p>手册有一句非常扎心的话：<strong>股民的记忆力只有 7 秒</strong>——上涨时押上所有，下跌时悔恨清仓，循环往复。亏钱的原因 99% 是贪婪，少数才是恐惧。</p>
+
+  <h3>😈 三大"新人杀手"</h3>
+  <table>
+    <tr><th style="width:20%">陷阱</th><th>表现</th><th style="width:34%">解药</th></tr>
+    <tr><td><strong>侥幸心理</strong></td><td>明知要调整，幻想"再涨一波就走"</td><td>把卖出条件提前写成规则，到点执行</td></tr>
+    <tr><td><strong>扳本心理</strong></td><td>亏损后报复性交易，越想翻盘越亏</td><td>设每日亏损上限，触发即离场休息</td></tr>
+    <tr><td><strong>依赖心理</strong></td><td>盲目跟大V/他人，信息传递中磨损严重</td><td>建立自己的操作系统，别人的话只当参考</td></tr>
+  </table>
+
+  <h3>🧘 心态三要素</h3>
+  <div class="grid">
+    <div class="gcard"><div class="ico">💪</div><h5>自信</h5><p>别人都说完了，你敢说不——基于自己的研究，不是嘴硬</p></div>
+    <div class="gcard"><div class="ico">🕊️</div><h5>平和</h5><p>控制不住情绪时，就减仓到能睡着觉的仓位</p></div>
+    <div class="gcard"><div class="ico">✂️</div><h5>果断</h5><p>断舍离的决绝——该卖不卖，是牛市里最常见的慢性失血</p></div>
+  </div>
+
+  <div class="key">⭐ <strong>睡眠测试</strong>：手册的决策规则里有一条——"如果持仓让你焦虑影响睡眠，说明仓位超过风险承受范围，立即减仓"。这是最朴素也最有效的风控标准。</div>
+
+  <h3>⚖️ 两个必须想清楚的对比</h3>
+  <ul>
+    <li><strong>踏空 vs 被套</strong>：踏空不亏钱，被套亏本金。所以宁可错过，不可做错——这也是"不追高"的心理学依据；</li>
+    <li><strong>贪婪 vs 恐惧</strong>：99% 的错误源于贪婪（想多赚一点），只有少数源于恐惧。管住贪婪，就管住了大部分风险。</li>
+  </ul>
+
+  <div class="story">📖 <strong>早课故事（2022/10 割肉）</strong>：很多人在 2022 年 10 月恐慌中割肉清仓，恰恰卖在了最底部——随后市场反弹，割肉的人眼睁睁看着行情从"买点"启动。恐慌不是让你行动的信号，而是让你<strong>检查规则</strong>的信号。</div>
+</section>
+
+<section id="ch20">
+  <h2 class="sec-title"><span class="num">20</span>决策启发式：把体系变成 10 条指令</h2>
+  <p class="sec-sub">模块六 · 决策规则 | 手册最实用的"快捷方式"</p>
+
+  <p>如果你暂时没时间学完所有指标，这 10 条 <strong>"如果…那么…"</strong>规则就是整套手册的浓缩版。它们是前面所有模块的<strong>决策接口</strong>——建议截图保存，贴在电脑前。</p>
+
+  <div class="fig">
+    <table style="margin:0">
+      <tr><th style="width:8%">#</th><th style="width:52%">如果…</th><th>那么…</th></tr>
+      <tr><td>1</td><td>市场连续大涨、情绪亢奋、成交量异常放大</td><td><strong>分批减仓锁定利润</strong></td></tr>
+      <tr><td>2</td><td>指数跌破 20 日均线且 3 日无法收回</td><td><strong>仓位降至 5 成以下</strong></td></tr>
+      <tr><td>3</td><td>CCI&lt;-100 + KDJ&lt;20 + RSI&lt;30 同时出现</td><td>关注超跌反弹，等指标共振确认</td></tr>
+      <tr><td>4</td><td>会议提出全新方向</td><td>纳入重点关注，研究产业链机会</td></tr>
+      <tr><td>5</td><td>持仓出现顶背离 + 高位放量滞涨</td><td><strong>立即减仓甚至清仓</strong></td></tr>
+      <tr><td>6</td><td>利好不涨 或 利空不跌</td><td>警惕趋势可能转变</td></tr>
+      <tr><td>7</td><td>连续横盘且量能萎缩</td><td>减少操作，等待方向选择</td></tr>
+      <tr><td>8</td><td>板块出现政策+资金+景气度三重共振</td><td><strong>核心配置，重点参与</strong></td></tr>
+      <tr><td>9</td><td>持仓让你焦虑、影响睡眠</td><td>仓位超风险承受范围，<strong>立即减仓</strong></td></tr>
+      <tr><td>10</td><td>市场一致看多（融资余额攀升）</td><td>保持警惕，降低仓位</td></tr>
+    </table>
+    <div class="fig-caption"><b>图 20-1</b> · 十大决策启发式：条件出现 → 执行动作，不商量、不犹豫</div>
+  </div>
+
+  <div class="tip">💡 <strong>用法提示</strong>：这些规则的价值在于"<strong>预设</strong>"——提前写好剧本，行情来了照做即可，避免盘中临时起意。你可以根据自己的风险偏好微调参数（比如把 20 日线换成 30 日线），但<strong>一旦定下就别改</strong>。</div>
+</section>
+
+<section id="ch21">
+  <h2 class="sec-title"><span class="num">21</span>核心八原则：毕业前必须背下来的八句话</h2>
+  <p class="sec-sub">模块总结 | 整套手册的价值观</p>
+
+  <div class="grid">
+    <div class="gcard"><div class="ico">🇨🇳</div><h5>① 顺国家意志</h5><p>慢牛来之不易，顺国家意志而为，逆散户人性而行</p></div>
+    <div class="gcard"><div class="ico">🔁</div><h5>② 卖涨买跌</h5><p>卖在上涨时，买在下跌处——做反了会非常麻烦</p></div>
+    <div class="gcard"><div class="ico">🎯</div><h5>③ 大涨大卖</h5><p>不追求最高点，追求相对高位就够</p></div>
+    <div class="gcard"><div class="ico">🛡️</div><h5>④ 控制仓位</h5><p>仓位绝不超出风险承受范围</p></div>
+    <div class="gcard"><div class="ico">🙏</div><h5>⑤ 敬畏市场</h5><p>建立交易纪律，用规则代替情绪</p></div>
+    <div class="gcard"><div class="ico">📚</div><h5>⑥ 不懂不做</h5><p>不懂不做、不熟不投——认知边界就是安全边界</p></div>
+    <div class="gcard"><div class="ico">🐢</div><h5>⑦ 震荡是牛市的一部分</h5><p>三步一回头是健康，别被洗下车</p></div>
+    <div class="gcard"><div class="ico">🔄</div><h5>⑧ 不离开市场</h5><p>永远在场，但做高低切换</p></div>
+  </div>
+
+  <div class="koujue">慢牛来之不易 · 卖涨买跌 · 大涨大卖 · 控制仓位<br>敬畏市场 · 不懂不做 · 震荡是牛市 · 不离开市场</div>
+
+  <div class="warn">⚠️ <strong>诚实边界（手册原话）</strong>：本框架不能预测短期市场走向，任何声称能准确预测的方法都值得警惕；技术指标需要综合判断，不依赖单一指标；本手册不构成具体买卖建议，投资决策需独立判断；框架更适合 A 股市场，偏向慢牛/震荡市策略。<strong>投资有风险，入市需谨慎。</strong></div>
+</section>
+
+<!-- ================= 学习路径 ================= -->
+<section id="path">
+  <h2 class="sec-title"><span class="num">★</span>21天学习路径：从新手到"手册会用"</h2>
+  <p class="sec-sub">把 52 期早课浓缩成 3 周的渐进式学习</p>
+
+  <div class="path">
+    <div class="path-item">
+      <div class="path-dot">W1</div>
+      <div class="path-body"><b>第一周 · 理念筑基</b><p>精读第 1–4 章：核心主线、二元论、年份周期、选方向。每天 20 分钟，重点理解"顺国家意志、逆散户人性"和"震荡市是牛市的一部分"。本周不碰交易软件。</p></div>
+    </div>
+    <div class="path-item">
+      <div class="path-dot">W2</div>
+      <div class="path-body"><b>第二周 · 技术工具</b><p>精读第 5–11 章：先学 K 线和均线（第5、6章），再看量价（第7章），最后逐个学 MACD/KDJ/BOLL（第8–10章）。每天只学一个指标，并用模拟盘找 3 个历史案例验证。</p></div>
+    </div>
+    <div class="path-item">
+      <div class="path-dot">W3</div>
+      <div class="path-body"><b>第三周 · 系统与心态</b><p>精读第 12–19 章：基本面、操作系统、九宫格、风险评估三问、心理陷阱。周末完成：① 给自己做风险评估三问；② 写下属于自己的"操作系统"（买入条件+卖出条件+仓位规则）；③ 背诵第 20 章十条决策规则和第 21 章八原则。</p></div>
+    </div>
+    <div class="path-item">
+      <div class="path-dot">🏁</div>
+      <div class="path-body"><b>毕业练习 · 模拟盘 30 天</b><p>用模拟盘按你的操作系统执行 30 天，每天记录：今天触发了哪条规则？执行了吗？情绪是什么？30 天后复盘胜率和纪律执行率——<strong>纪律比预测重要</strong>。</p></div>
+    </div>
+  </div>
+
+  <div class="key">⭐ <strong>给新手的三个习惯</strong>：① 每天收盘后看 10 分钟大盘（指数 vs 20日线、量能变化）；② 每次想交易前，先写"理由一句话"（对应哪条规则？）；③ 每月底做一次复盘：赚在哪、亏在哪、哪条规则没执行。</div>
+</section>
+
+<!-- ================= 自测题 ================= -->
+<section id="quiz">
+  <h2 class="sec-title"><span class="num">✓</span>结业自测：你掌握了多少？</h2>
+  <p class="sec-sub">10 道题检验学习成果（点击选项可看答案）</p>
+
+  <div class="quiz">
+    <div class="q">1️⃣ 手册的核心主线是？</div>
+    <details class="answer"><summary>查看答案</summary><div class="ans-body"><strong>顺国家意志而为，逆散户人性而行。</strong>前者定方向，后者管心态与买卖节奏。</div></details>
+  </div>
+  <div class="quiz">
+    <div class="q">2️⃣ "上涨过程中积累风险，下跌过程中释放机会"体现了什么思维？</div>
+    <details class="answer"><summary>查看答案</summary><div class="ans-body"><strong>股市二元论</strong>——利好与利空、快与慢、一致与分歧、托底与控温，都要辩证看待。</div></details>
+  </div>
+  <div class="quiz">
+    <div class="q">3️⃣ 年份尾数是 6 或 7 的年份，历史上多为？</div>
+    <details class="answer"><summary>查看答案</summary><div class="ans-body"><strong>持续行情年</strong>（如 1996-97、2006-07、2016-17），策略核心是"找顶"——拿得住也要会逃。</div></details>
+  </div>
+  <div class="quiz">
+    <div class="q">4️⃣ 地量缩至前期高点成交量的多少，大概率对应反转而非反弹？</div>
+    <details class="answer"><summary>查看答案</summary><div class="ans-body"><strong>1/3</strong> 左右是反转信号；1/2 左右多为反弹。</div></details>
+  </div>
+  <div class="quiz">
+    <div class="q">5️⃣ 手册中"只投 0 轴上方"指的是哪个指标？</div>
+    <details class="answer"><summary>查看答案</summary><div class="ans-body"><strong>MACD</strong>——0 轴上方为"春夏"做多区，下方为"秋冬"休息区。</div></details>
+  </div>
+  <div class="quiz">
+    <div class="q">6️⃣ KDJ 日/周/月线六种形态中，哪一种可以重仓？</div>
+    <details class="answer"><summary>查看答案</summary><div class="ans-body"><strong>形态一</strong>：日D&lt;20金叉 + 周J&lt;20向上 + 月KDJ低位向上——三周期共振低位向上，坚定入场。</div></details>
+  </div>
+  <div class="quiz">
+    <div class="q">7️⃣ 渗透率处于哪个阶段的行业，可以容忍 60–120 倍估值？</div>
+    <details class="answer"><summary>查看答案</summary><div class="ans-body"><strong>破壁渗透期（渗透率 &lt;20%）</strong>——政策/技术驱动，只看 PEG，别用 PE 吓自己。</div></details>
+  </div>
+  <div class="quiz">
+    <div class="q">8️⃣ 九宫格仓位管理表中，"牛震荡1"（10日线下、30日线上）适合什么仓位？</div>
+    <details class="answer"><summary>查看答案</summary><div class="ans-body"><strong>中仓</strong>（40% 左右）——短线偏弱但中线趋势仍在，降低短线仓位但不必离场。</div></details>
+  </div>
+  <div class="quiz">
+    <div class="q">9️⃣ 风险评估三问中，全部有固定资产/备用金/现金流的人属于？</div>
+    <details class="answer"><summary>查看答案</summary><div class="ans-body"><strong>保守型</strong>——安全垫最厚，但反而更应轻仓守成；三问全无则是激进型，更要限制仓位。</div></details>
+  </div>
+  <div class="quiz">
+    <div class="q">🔟 指数跌破 20 日均线且 3 日无法收回，决策规则要求？</div>
+    <details class="answer"><summary>查看答案</summary><div class="ans-body"><strong>仓位降至 5 成以下</strong>——20 日线是强弱分水岭，破线不收回就是趋势转弱。</div></details>
+  </div>
+
+  <div class="key">⭐ <strong>评分参考</strong>：答对 8 题以上 = 可以开始用模拟盘实践；答对 5–7 题 = 建议回看对应章节；答对 4 题以下 = 别急，从头再来一遍，投资体系急不得。</div>
+</section>
+
+</main>
+<button id="backTop" title="回到顶部">↑</button>
+<footer>
+  <div class="foot-note">
+    📌 <strong>声明</strong>：本培训书内容基于知识库「张湧小密圈投研资料」中的《牛市生存手册》系列早课整理，仅供投资学习与研究参考，不构成任何具体买卖建议。投资有风险，入市需谨慎。市场有风险，任何策略都无法保证盈利，请独立决策。
+  </div>
+  <div style="margin-top:14px">智子 · 为投资初学者制作 | 配色暖阳 · 心情愉悦地学习 🍊</div>
+</footer>
+<script>
+/* 阅读进度条 */
+const bar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  bar.style.width=p+'%';
+  document.getElementById('backTop').classList.toggle('show',h.scrollTop>600);
+});
+document.getElementById('backTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+/* 导航高亮 */
+const links=[...document.querySelectorAll('.nav-toc a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a=[...links].find(l=>l.getAttribute('href')==='#'+e.target.id);
+      if(a)a.classList.add('active');
+    }
+  });
+},{rootMargin:'-30% 0px -60% 0px'});
+secs.forEach(s=>{if(s)io.observe(s);});
+</script>
+</body>
+</html>
